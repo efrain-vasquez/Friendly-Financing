@@ -1,7 +1,10 @@
+
 /* If using MongoDB, install mongoose with
  * npm install -S mongoose  or
  * yarn add mongoose
  */
+
+/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -38,3 +41,5 @@ module.exports = {
   db,
   exampleSchema: mongoose.model('example', exampleSchema),
 };
+
+*/
