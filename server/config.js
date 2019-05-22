@@ -21,6 +21,8 @@ which is the functions your server uses to get and post data to your database)
 // HTTP Requests go here
 app.get('/MembersInfo', getThisData)
 app.post('/MembersInfo', postThisData)
+app.get('/LoanRequestInfo', getThisLoanRequestData)
+app.post('/LoanRequestInfo', postThisLoanRequestData)
 
 // react-router fallback so we can reload without visiting root
 app.get('/*', function (req, res) {
@@ -44,6 +46,26 @@ function postThisData (request, response) {
   console.log(response)
   const { First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference } = request.body
   db.postMyData(First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference, (res) => {
+    response
+      .status(200)
+      .send(res)
+      .end()
+  })
+};
+
+function getThisLoanRequestData (request, response) {
+  console.log('getThisLoanRequestData server fires')
+  db.getLoanRequestData(data => {
+    response
+      .status(200)
+      .send(data)
+  })
+};
+
+function postThisLoanRequestData (request, response) {
+  console.log(response)
+  const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = request.body
+  db.postLoanRequestData(First_Name, Last_Name, Amount_Requesting, Reason_For_Request, (res) => {
     response
       .status(200)
       .send(res)

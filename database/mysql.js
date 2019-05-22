@@ -41,3 +41,29 @@ module.exports.postMyData = function (First_Name, Last_Name, Email_Address, Curr
     }
   )
 }
+
+module.exports.getLoanRequestData = cb => {
+  connection.query('SELECT * from LoanRequestInfo', (error, results) => {
+    if (error) {
+      throw error
+    } else {
+      console.log('this is getLoanRequestData from mysql query', results)
+      cb(results)
+    }
+  })
+}
+
+module.exports.postLoanRequestData = function (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, cb) {
+  connection.query(
+    'INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request) VALUES (?, ?, ?, ?);',
+    [First_Name, Last_Name, Amount_Requesting, Reason_For_Request],
+    (error, results) => {
+      if (error) {
+        cb(error)
+      } else {
+        console.log('this is postLoanRequestData from mysql query', results)
+        cb(results)
+      }
+    }
+  )
+}

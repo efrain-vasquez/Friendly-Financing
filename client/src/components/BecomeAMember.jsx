@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
+import Members from './Members.jsx'
 
 class BecomeAMember extends Component {
   constructor (props) {

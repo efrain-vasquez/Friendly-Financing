@@ -6,25 +6,72 @@ import BecomeAMember from './BecomeAMember'
 class Members extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      First_Name: '',
-      Last_Name: '',
-      Email_Address: '',
-      Current_Employer: '',
-      Job_Title: '',
-      Time_Employed_At_Current_Job: '',
-      References: ''
-    }
   }
 
   render () {
+    const { MembersInfo } = this.props
+    console.log(MembersInfo[0].id)
+    const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference }) =>
+      (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Email_Address}`}</td><td>{`${Current_Employer}`}</td><td>{`${Job_Title}`}</td><td>{`${Time_Employed_At_Current_Job}`}</td><td>{`${Reference}`}</td> </tr>)
     return (
       <div>
         <Header />
-        <h2>Members</h2>
+        <section class='hero is-light bold title'>
+          <div class='hero-body'>
+            <div class='container'>
+              <p class='title'>List of Members</p>
+            </div>
+          </div>
+        </section>
+        <table class='table table is-striped is-hoverable is-fullwidth is-bordered'>
+          <thead>
+            <tr>
+              <th>First Name:</th>
+              <th>Last Name:</th>
+              <th>Email Address:</th>
+              <th>Current Employer:</th>
+              <th>Job Title:</th>
+              <th>Time Employed At Current Job:</th>
+              <th>Reference:</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {MembersInfo.map(listItem => (
+              <IndividualMember
+                key={listItem.id}
+                First_Name={listItem.First_Name}
+                Last_Name={listItem.Last_Name}
+                Email_Address={listItem.Email_Address}
+                Current_Employer={listItem.Current_Employer}
+                Job_Title={listItem.Job_Title}
+                Time_Employed_At_Current_Job={listItem.Time_Employed_At_Current_Job}
+                Reference={listItem.Reference}
+              />
+            ))}
+          </tbody>
+
+        </table>
       </div>
     )
   }
 }
 
 export default Members
+
+/*
+        <ul>
+          {MembersInfo.map(listItem => (
+            <IndividualMember
+              key={listItem.id}
+              First_Name={listItem.First_Name}
+              Last_Name={listItem.Last_Name}
+              Email_Address={listItem.Email_Address}
+              Current_Employer={listItem.Current_Employer}
+              Job_Title={listItem.Job_Title}
+              Time_Employed_At_Current_Job={listItem.Time_Employed_At_Current_Job}
+              Reference={listItem.Reference}
+            />
+          ))}
+        </ul>
+*/

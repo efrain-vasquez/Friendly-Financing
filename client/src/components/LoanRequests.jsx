@@ -1,5 +1,3 @@
-/*
-
 import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
@@ -11,15 +9,13 @@ class LoanRequests extends Component {
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: '',
-      Interest_Willing_To_Pay: '',
-      Time_Needed_To_Repay: ''
+      Reason_For_Request: ''
     }
-    this.handleMyLoanInput = this.handleMyLoanInput.bind(this)
-    this.handleMyLoanSubmit = this.handleMyLoanSubmit.bind(this)
+    this.handleLoanRequestInput = this.handleLoanRequestInput.bind(this)
+    this.handleLoanRequestSubmit = this.handleLoanRequestSubmit.bind(this)
   }
 
-  handleMyLoanInput (e) {
+  handleLoanRequestInput (e) {
     const { target } = e
     const { name, value } = target
 
@@ -28,23 +24,28 @@ class LoanRequests extends Component {
     })
   }
 
-  handleMyLoanSubmit (e) {
+  handleLoanRequestSubmit (e) {
     e.preventDefault()
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Interest_Willing_To_Pay, Time_Needed_To_Repay } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
 
-    this.props.postMyLoanData('/MembersInfo', {
+    this.props.postLoanRequestData('/LoanRequestInfo', {
+      First_Name,
+      Last_Name,
+      Amount_Requesting,
+      Reason_For_Request
+    })
+
+    this.setState({
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: '',
-      Interest_Willing_To_Pay: '',
-      Time_Needed_To_Repay: ''
+      Reason_For_Request: ''
     })
   }
 
   render () {
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Interest_Willing_To_Pay, Time_Needed_To_Repay } = this.state
-    const { postMyLoanData } = this.props
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
+    const { postLoanRequestData } = this.props
     return (
       <div>
         <Header />
@@ -54,7 +55,7 @@ class LoanRequests extends Component {
             type='text'
             name='First_Name'
             value={First_Name}
-            onChange={this.handleMyLoanInput}
+            onChange={this.handleLoanRequestInput}
           />
         </label>
 
@@ -65,7 +66,7 @@ class LoanRequests extends Component {
             type='text'
             name='Last_Name'
             value={Last_Name}
-            onChange={this.handleMyLoanInput}
+            onChange={this.handleLoanRequestInput}
           />
         </label>
 
@@ -76,50 +77,26 @@ class LoanRequests extends Component {
             type='text'
             name='Amount_Requesting'
             value={Amount_Requesting}
-            onChange={this.handleMyLoanInput}
+            onChange={this.handleLoanRequestInput}
           />
         </label>
 
         <br />
         <label>
-          Reason For Request:{' '}
+          Reason For Request (optional):{' '}
           <input
             type='text'
             name='Reason_For_Request'
             value={Reason_For_Request}
-            onChange={this.handleMyLoanInput}
+            onChange={this.handleLoanRequestInput}
           />
         </label>
 
         <br />
-        <label>
-          Interest Willing To Pay:{' '}
-          <input
-            type='text'
-            name='Interest_Willing_To_Pay'
-            value={Interest_Willing_To_Pay}
-            onChange={this.handleMyLoanInput}
-          />
-        </label>
-
-        <br />
-        <label>
-          Time Needed To Repay:{' '}
-          <input
-            type='text'
-            name='Time_Needed_To_Repay'
-            value={Time_Needed_To_Repay}
-            onChange={this.handleMyLoanInput}
-          />
-        </label>
-
-        <br />
-        <button onClick={this.handleMyLoanSubmit}>SUBMIT</button>
+        <button onClick={this.handleLoanRequestSubmit}>SUBMIT</button>
       </div>
     )
   }
 }
 
 export default LoanRequests
-
-*/
