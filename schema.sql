@@ -44,4 +44,4 @@ CREATE TABLE IF NOT EXISTS LoanRequestInfo (
 
 
 INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request) 
-               VALUES ("Efrain", "Vasquez Arias", "1000 Pesos", "");
+               VALUES ("Efrain", "Vasquez Arias", "1000 Pesos", "no comment");

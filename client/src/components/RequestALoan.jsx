@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
+import AcceptedLoans from './AcceptedLoans.jsx'
 
-class LoanRequests extends Component {
+class RequestALoan extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -28,7 +29,7 @@ class LoanRequests extends Component {
     e.preventDefault()
     const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
 
-    this.props.postLoanRequestData('/LoanRequestInfo', {
+    this.props.postMembersLoanRequestData('/LoanRequestInfo', {
       First_Name,
       Last_Name,
       Amount_Requesting,
@@ -45,7 +46,7 @@ class LoanRequests extends Component {
 
   render () {
     const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
-    const { postLoanRequestData } = this.props
+    const { postMembersLoanRequestData } = this.props
     return (
       <div>
         <Header />
@@ -99,4 +100,4 @@ class LoanRequests extends Component {
   }
 }
 
-export default LoanRequests
+export default RequestALoan

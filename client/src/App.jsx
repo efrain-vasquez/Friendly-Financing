@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import BecomeAMember from './components/BecomeAMember.jsx'
 import Members from './components/Members.jsx'
-import LoanRequests from './components/LoanRequests.jsx'
+import RequestALoan from './components/RequestALoan.jsx'
 import AcceptedLoans from './components/AcceptedLoans.jsx'
 import GiveRating from './components/GiveRating.jsx'
 
@@ -18,15 +18,15 @@ class App extends Component {
     }
     this.getData = this.getData.bind(this)
     this.postData = this.postData.bind(this)
-    this.getLoanRequestData = this.getLoanRequestData.bind(this)
-    this.postLoanRequestData = this.postLoanRequestData.bind(this)
+    this.getMembersLoanRequestData = this.getMembersLoanRequestData.bind(this)
+    this.postMembersLoanRequestData = this.postMembersLoanRequestData.bind(this)
     // this.addItem = this.addItem.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
   }
 
   componentDidMount () {
     this.getData('/MembersInfo')
-    this.getLoanRequestData('/LoanRequestInfo')
+    this.getMembersLoanRequestData('/LoanRequestInfo')
   }
 
   getData (url = '') {
@@ -53,11 +53,10 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  getLoanRequestData (url = '') {
+  getMembersLoanRequestData (url = '') {
     return fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         this.setState({
           LoanData: data
         })
@@ -65,7 +64,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  postLoanRequestData (url = '', data = {}) {
+  postMembersLoanRequestData (url = '', data = {}) {
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -74,7 +73,7 @@ class App extends Component {
       body: JSON.stringify(data)
     })
       .then(response => response.json())
-      .then(() => this.getLoanRequestData(url))
+      .then(() => this.getMembersLoanRequestData(url))
       .catch(err => console.error(err))
   }
 
@@ -115,17 +114,16 @@ class App extends Component {
   }
 
   render () {
-    const { MembersInfo } = this.state
-    const { LoanData } = this.state
+    const { MembersInfo, LoanData } = this.state
     return (
       <BrowserRouter>
         <div>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/BecomeAMember' render={(props) => <BecomeAMember {...props} postData={this.postData} />} />
-            <Route exact path='/Members' render={(props) => <Members {...props} MembersInfo={MembersInfo} handleRemove={this.deleteItem} />} />
-            <Route exact path='/LoanRequests' render={(props) => <LoanRequests {...props} postLoanRequestData={this.postLoanRequestData} />} />
-            <Route exact path='/AcceptedLoans' component={AcceptedLoans} />
+            <Route exact path='/Members' render={(props) => <Members {...props} MembersInfo={MembersInfo} handleRemove={this.deleteItem} getData={this.getData} />} />
+            <Route exact path='/AcceptedLoans' render={(props) => <AcceptedLoans {...props} LoanData={LoanData} postMembersLoanRequestData={this.postMembersLoanRequestData} getMembersLoanRequestData={this.getMembersLoanRequestData} />} />
+            <Route exact path='/RequestALoan' render={(props) => <RequestALoan {...props} LoanData={LoanData} getMembersLoanRequestData={this.getMembersLoanRequestData} postMembersLoanRequestData={this.postMembersLoanRequestData} />} />
             <Route exact path='/GiveRating' component={GiveRating} />
           </Switch>
         </div>
@@ -138,3 +136,5 @@ class App extends Component {
 export default hot(module)(App)
 // Uncomment line 13 & delete line 11 when starting fullstack integration
 // export default App
+
+// <Route exact path='/RequestALoan' render={(props) => <RequestALoan {...props} LoanData={LoanData} getMembersLoanRequestData={this.getMembersLoanRequestData} postMembersLoanRequestData={this.postMembersLoanRequestData} />} />

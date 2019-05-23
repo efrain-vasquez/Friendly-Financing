@@ -9,21 +9,20 @@ class Members extends Component {
   }
 
   render () {
-    const { MembersInfo } = this.props
-    console.log(MembersInfo[0].id)
-    const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference }) =>
-      (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Email_Address}`}</td><td>{`${Current_Employer}`}</td><td>{`${Job_Title}`}</td><td>{`${Time_Employed_At_Current_Job}`}</td><td>{`${Reference}`}</td> </tr>)
+    const { MembersInfo, handleRemove } = this.props
+    const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference, removeItem }) =>
+      (<tr onClick={handleRemove}><td onClick={handleRemove}>{`${First_Name}`}</td><td onClick={handleRemove}>{`${Last_Name}`}</td><td onClick={handleRemove}>{`${Email_Address}`}</td><td onClick={handleRemove}>{`${Current_Employer}`}</td><td onClick={handleRemove}>{`${Job_Title}`}</td><td onClick={handleRemove}>{`${Time_Employed_At_Current_Job}`}</td><td onClick={handleRemove}>{`${Reference}`}</td></tr>)
     return (
       <div>
         <Header />
-        <section class='hero is-light bold title'>
-          <div class='hero-body'>
-            <div class='container'>
-              <p class='title'>List of Members</p>
+        <section className='hero is-light bold title'>
+          <div className='hero-body'>
+            <div className='container'>
+              <p className='title'>List of Members</p>
             </div>
           </div>
         </section>
-        <table class='table table is-striped is-hoverable is-fullwidth is-bordered'>
+        <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
               <th>First Name:</th>
@@ -47,6 +46,7 @@ class Members extends Component {
                 Job_Title={listItem.Job_Title}
                 Time_Employed_At_Current_Job={listItem.Time_Employed_At_Current_Job}
                 Reference={listItem.Reference}
+                handleRemove={() => handleRemove('/MembersInfo', listItem.id)}
               />
             ))}
           </tbody>
@@ -58,20 +58,3 @@ class Members extends Component {
 }
 
 export default Members
-
-/*
-        <ul>
-          {MembersInfo.map(listItem => (
-            <IndividualMember
-              key={listItem.id}
-              First_Name={listItem.First_Name}
-              Last_Name={listItem.Last_Name}
-              Email_Address={listItem.Email_Address}
-              Current_Employer={listItem.Current_Employer}
-              Job_Title={listItem.Job_Title}
-              Time_Employed_At_Current_Job={listItem.Time_Employed_At_Current_Job}
-              Reference={listItem.Reference}
-            />
-          ))}
-        </ul>
-*/
