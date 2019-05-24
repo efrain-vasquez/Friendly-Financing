@@ -9,13 +9,13 @@ class Members extends Component {
   }
 
   render () {
-    const { MembersInfo, handleRemove } = this.props
-    const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference, removeItem }) =>
-      (<tr onClick={handleRemove}><td onClick={handleRemove}>{`${First_Name}`}</td><td onClick={handleRemove}>{`${Last_Name}`}</td><td onClick={handleRemove}>{`${Email_Address}`}</td><td onClick={handleRemove}>{`${Current_Employer}`}</td><td onClick={handleRemove}>{`${Job_Title}`}</td><td onClick={handleRemove}>{`${Time_Employed_At_Current_Job}`}</td><td onClick={handleRemove}>{`${Reference}`}</td></tr>)
+    const { MembersInfo } = this.props
+    const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference }) =>
+      (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Email_Address}`}</td><td>{`${Current_Employer}`}</td><td>{`${Job_Title}`}</td><td>{`${Time_Employed_At_Current_Job}`}</td><td>{`${Reference}`}</td></tr>)
     return (
       <div>
         <Header />
-        <section className='hero is-light bold title'>
+        <section className='hero is-primary is-bold'>
           <div className='hero-body'>
             <div className='container'>
               <p className='title'>List of Members</p>
@@ -38,7 +38,6 @@ class Members extends Component {
           <tbody>
             {MembersInfo.map(listItem => (
               <IndividualMember
-                key={listItem.id}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}
                 Email_Address={listItem.Email_Address}
@@ -46,7 +45,6 @@ class Members extends Component {
                 Job_Title={listItem.Job_Title}
                 Time_Employed_At_Current_Job={listItem.Time_Employed_At_Current_Job}
                 Reference={listItem.Reference}
-                handleRemove={() => handleRemove('/MembersInfo', listItem.id)}
               />
             ))}
           </tbody>

@@ -7,7 +7,15 @@ class GiveRating extends Component {
     return (
       <div>
         <Header />
-        <h2>Give Rating</h2>
+        <section className='hero is-small is-primary is-bold is-center'>
+          <div className='hero-body'>
+            <div className='container'>
+              <h1 className='title'>
+        Accepted Loans and Rating
+              </h1>
+            </div>
+          </div>
+        </section>
       </div>
     )
   }

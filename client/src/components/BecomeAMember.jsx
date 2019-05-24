@@ -55,10 +55,23 @@ class BecomeAMember extends Component {
 
   render () {
     const { First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference } = this.state
-    const { postData } = this.props
+    const { MembersInfo } = this.props
     return (
       <div>
         <Header />
+        <section className='hero is-small is-primary is-bold is-center'>
+          <div className='hero-body'>
+            <div className='container'>
+              <h1 className='title'>
+        Become A Member
+              </h1>
+              <h2 className='subtitle'>
+        Become A Community!
+              </h2>
+            </div>
+          </div>
+        </section>
+
         <label>
           First Name:{' '}
           <input

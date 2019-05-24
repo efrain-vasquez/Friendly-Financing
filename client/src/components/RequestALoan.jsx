@@ -50,6 +50,17 @@ class RequestALoan extends Component {
     return (
       <div>
         <Header />
+        <section className='hero is-small is-primary is-bold is-center'>
+          <div className='hero-body'>
+            <div className='container'>
+              <h1 className='title'>
+        Request A Loan
+              </h1>
+              <h2 className='subtitle' />
+            </div>
+          </div>
+        </section>
+
         <label>
           First Name:{' '}
           <input
