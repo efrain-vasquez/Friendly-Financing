@@ -79,10 +79,10 @@ module.exports.getLoanTermsData = cb => {
   })
 }
 
-module.exports.postLoanTermsData = function (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms, cb) {
+module.exports.postLoanTermsData = function (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO LoanTermsInfo (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms) VALUES (?, ?, ?, ?, ?, ?);',
-    [id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms],
+    'INSERT INTO LoanTermsInfo (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?);',
+    [id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)

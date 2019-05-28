@@ -66,14 +66,14 @@ class BecomeAMember extends Component {
         Become A Member
               </h1>
               <h2 className='subtitle'>
-        Become A Community!
+                <strong>Become A Community!</strong>
               </h2>
             </div>
           </div>
         </section>
 
         <label>
-          First Name:{' '}
+          <strong>First Name:</strong>{' '}
           <input
             type='text'
             name='First_Name'
@@ -84,7 +84,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Last Name:{' '}
+          <strong>Last Name:</strong>{' '}
           <input
             type='text'
             name='Last_Name'
@@ -95,7 +95,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Email Address:{' '}
+          <strong>Email Address:</strong>{' '}
           <input
             type='text'
             name='Email_Address'
@@ -106,7 +106,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Current Employer:{' '}
+          <strong>Current Employer:</strong>{' '}
           <input
             type='text'
             name='Current_Employer'
@@ -117,7 +117,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Job Title:{' '}
+          <strong>Job Title:</strong>{' '}
           <input
             type='text'
             name='Job_Title'
@@ -128,7 +128,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Time Employed At Current Job:{' '}
+          <strong>Time Employed At Current Job:</strong>{' '}
           <input
             type='text'
             name='Time_Employed_At_Current_Job'
@@ -139,7 +139,7 @@ class BecomeAMember extends Component {
 
         <br />
         <label>
-          Reference:{' '}
+          <strong>Reference:</strong>{' '}
           <input
             type='text'
             name='Reference'
@@ -149,7 +149,9 @@ class BecomeAMember extends Component {
         </label>
 
         <br />
-        <button onClick={this.handleSubmit}>SUBMIT</button>
+        <div className='button is-primary is-outlined is-small'>
+          <button className='button is-text is-outlined is-normal' onClick={this.handleSubmit}><strong>SUBMIT</strong></button>
+        </div>
       </div>
     )
   }

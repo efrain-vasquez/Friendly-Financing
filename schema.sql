@@ -46,16 +46,15 @@ INSERT INTO LoanRequestInfo (id, Date_Of_Entry, First_Name, Last_Name, Amount_Re
 
 CREATE TABLE IF NOT EXISTS LoanTermsInfo (
   id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Date_Of_Entry DATE NOT NULL,
   Interest_On_Loan VARCHAR(50) NOT NULL,
   Repayment_Schedule VARCHAR(50) NOT NULL,
   Number_Of_Payments VARCHAR(50) NOT NULL,
-  Agree_To_Terms VARCHAR(10) NOT NULL
+  Lenders_Pay_Pal_Info VARCHAR(10) NOT NULL
   );
 
 
-INSERT INTO LoanTermsInfo (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms) 
-               VALUES (id, curdate(), "", "", "", "");
+INSERT INTO LoanTermsInfo (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) 
+               VALUES (id, "", "", "", "");
 
 
 /*

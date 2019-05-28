@@ -54,7 +54,7 @@ class RequestALoan extends Component {
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>
-        Request A Loan From the Community
+        Request A Loan
               </h1>
               <h2 className='subtitle' />
             </div>
@@ -62,7 +62,7 @@ class RequestALoan extends Component {
         </section>
 
         <label>
-          First Name:{' '}
+          <strong>First Name:</strong>{' '}
           <input
             type='text'
             name='First_Name'
@@ -73,7 +73,7 @@ class RequestALoan extends Component {
 
         <br />
         <label>
-          Last Name:{' '}
+          <strong>Last Name:</strong>{' '}
           <input
             type='text'
             name='Last_Name'
@@ -84,7 +84,7 @@ class RequestALoan extends Component {
 
         <br />
         <label>
-          Amount Requesting:{' '}
+          <strong>Amount Requesting:</strong>{' '}
           <input
             type='text'
             name='Amount_Requesting'
@@ -95,7 +95,7 @@ class RequestALoan extends Component {
 
         <br />
         <label>
-          Reason For Request (optional):{' '}
+          <strong>Reason For Request (optional):</strong>{' '}
           <input
             type='text'
             name='Reason_For_Request'
@@ -105,7 +105,9 @@ class RequestALoan extends Component {
         </label>
 
         <br />
-        <button onClick={this.handleLoanRequestSubmit}>SUBMIT</button>
+        <div className='button is-primary is-outlined is-small'>
+          <button className='button is-text is-outlined is-normal' onClick={this.handleSubmit}><strong>SUBMIT</strong></button>
+        </div>
       </div>
     )
   }
