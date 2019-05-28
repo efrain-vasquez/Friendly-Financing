@@ -22,6 +22,8 @@ app.get('/MembersInfo', getThisData)
 app.post('/MembersInfo', postThisData)
 app.get('/LoanRequestInfo', getThisLoanRequestData)
 app.post('/LoanRequestInfo', postThisLoanRequestData)
+app.get('/LoanTermsInfo', getThisLoanTermsData)
+app.post('/LoanTermsInfo', postThisLoanTermsData)
 
 // react-router fallback so we can reload without visiting root
 app.get('/*', function (req, res) {
@@ -53,7 +55,6 @@ function postThisData (request, response) {
 };
 
 function getThisLoanRequestData (request, response) {
-  console.log('getThisLoanRequestData server fires')
   db.getLoanRequestData(data => {
     response
       .status(200)
@@ -63,8 +64,27 @@ function getThisLoanRequestData (request, response) {
 
 function postThisLoanRequestData (request, response) {
   console.log(response)
-  const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = request.body
-  db.postLoanRequestData(First_Name, Last_Name, Amount_Requesting, Reason_For_Request, (res) => {
+  const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = request.body
+  db.postLoanRequestData(First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan, (res) => {
+    response
+      .status(200)
+      .send(res)
+      .end()
+  })
+};
+
+function getThisLoanTermsData (request, response) {
+  db.getLoanTermsData(data => {
+    response
+      .status(200)
+      .send(data)
+  })
+};
+
+function postThisLoanTermsData (request, response) {
+  console.log(response)
+  const { id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms } = request.body
+  db.postLoanTermsData(id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms, (res) => {
     response
       .status(200)
       .send(res)

@@ -6,14 +6,14 @@ class Home extends Component {
     return (
       <div>
         <Header />
-        <section className='hero is-medium is-primary is-bold'>
+        <section className='hero is-fullheight-with-navbar is-primary is-bold'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <h1 className='title'>
-        Welcome To Friendly Financing
+                <strong>Welcome To Friendly Financing</strong>
               </h1>
               <h2 className='subtitle'>
-        Where We Value Community!
+                <strong>Where We Value Community!</strong>
               </h2>
             </div>
           </div>

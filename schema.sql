@@ -11,9 +11,9 @@ CREATE DATABASE Members;
 
 USE Members;
 
-CREATE TABLE MembersInfo (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+CREATE TABLE IF NOT EXISTS MembersInfo (
+  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Date_Of_Entry DATE NOT NULL,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Email_Address VARCHAR(50) NOT NULL,
@@ -23,22 +23,39 @@ CREATE TABLE MembersInfo (
   Reference VARCHAR(50) NOT NULL
   ); 
 
- INSERT INTO MembersInfo (id, date, First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference) 
-               VALUES (id, date, "Efrain", "Vasquez Arias", "efrain.vasquez.arias@gmail.com", "HolaCode", "Student", "4 Months", "Marco Castillo");
+ INSERT INTO MembersInfo (id, Date_Of_Entry, First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference) 
+               VALUES (id, curdate(), "Efrain", "Vasquez Arias", "efrain.vasquez.arias@gmail.com", "HolaCode", "Student", "4 Months", "Marco Castillo");
 
 
 CREATE TABLE IF NOT EXISTS LoanRequestInfo (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Date_Of_Entry DATE NOT NULL,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Amount_Requesting VARCHAR(50) NOT NULL,
-  Reason_For_Request VARCHAR(200) NOT NULL
+  Reason_For_Request VARCHAR(200) NOT NULL,
+  Willing_To_Finance_Loan VARCHAR(50) NOT NULL
   );
 
 
-INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request) 
-               VALUES ("Efrain", "Vasquez Arias", "1000 Pesos", "no comment");
+INSERT INTO LoanRequestInfo (id, Date_Of_Entry, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan) 
+               VALUES (id, curdate(), "Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "");
+
+
+
+
+CREATE TABLE IF NOT EXISTS LoanTermsInfo (
+  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Date_Of_Entry DATE NOT NULL,
+  Interest_On_Loan VARCHAR(50) NOT NULL,
+  Repayment_Schedule VARCHAR(50) NOT NULL,
+  Number_Of_Payments VARCHAR(50) NOT NULL,
+  Agree_To_Terms VARCHAR(10) NOT NULL
+  );
+
+
+INSERT INTO LoanTermsInfo (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms) 
+               VALUES (id, curdate(), "", "", "", "");
 
 
 /*

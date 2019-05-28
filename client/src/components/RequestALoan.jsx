@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
-import AcceptedLoans from './AcceptedLoans.jsx'
+import PendingLoans from './PendingLoans.jsx'
 
 class RequestALoan extends Component {
   constructor (props) {
@@ -54,7 +54,7 @@ class RequestALoan extends Component {
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>
-        Request A Loan
+        Request A Loan From the Community
               </h1>
               <h2 className='subtitle' />
             </div>

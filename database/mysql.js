@@ -53,15 +53,41 @@ module.exports.getLoanRequestData = cb => {
   })
 }
 
-module.exports.postLoanRequestData = function (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, cb) {
+module.exports.postLoanRequestData = function (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan, cb) {
   connection.query(
-    'INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request) VALUES (?, ?, ?, ?);',
-    [First_Name, Last_Name, Amount_Requesting, Reason_For_Request],
+    'INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan) VALUES (?, ?, ?, ?, ?);',
+    [First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan],
     (error, results) => {
       if (error) {
         cb(error)
       } else {
         console.log('this is postLoanRequestData from mysql query', results)
+        cb(results)
+      }
+    }
+  )
+}
+
+module.exports.getLoanTermsData = cb => {
+  connection.query('SELECT * from LoanTermsInfo', (error, results) => {
+    if (error) {
+      throw error
+    } else {
+      console.log('this is getLoanTermsRequestData from mysql query', results)
+      cb(results)
+    }
+  })
+}
+
+module.exports.postLoanTermsData = function (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms, cb) {
+  connection.query(
+    'INSERT INTO LoanTermsInfo (id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms) VALUES (?, ?, ?, ?, ?, ?);',
+    [id, Date_Of_Entry, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Agree_To_Terms],
+    (error, results) => {
+      if (error) {
+        cb(error)
+      } else {
+        console.log('this is postLoanTermsRequestData from mysql query', results)
         cb(results)
       }
     }

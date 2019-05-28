@@ -4,42 +4,48 @@ import { Link } from 'react-router-dom'
 const Header = () => (
 
   <div>
-    <nav className='navbar is-transparent' role='navigation' aria-label='main navigation'>
+    <nav className='navbar is-transparent is-left' role='navigation' aria-label='main navigation'>
       <div className='navbar-brand'>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-medium'><Link to='/'><strong>Home</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/'><strong>Home</strong></Link></button>
           </div>
         </div>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-medium'><Link to='/BecomeAMember'><strong>Become A Member</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/BecomeAMember'><strong>Become A Member</strong></Link></button>
           </div>
         </div>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-medium'><Link to='/GiveRating'><strong>Accepted Loans</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/Members'><strong>Members</strong></Link></button>
           </div>
         </div>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-medium'><Link to='/AcceptedLoans'><strong>Pending Loans</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/RequestALoan'><strong>Request A Loan</strong></Link></button>
           </div>
         </div>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-medium'><Link to='/RequestALoan'><strong>Request A Loan</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/PendingLoans'><strong>Pending Loans</strong></Link></button>
           </div>
         </div>
 
         <div className='navbar-item'>
-          <div className='button is-primary is-outlined'>
-            <button className='button is-text is-light is-bold is-outlined is-fullwidth is-medium'><Link to='/Members'><strong>Members</strong></Link></button>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/LoanAgreementTerms'><strong>Loan Agreement Terms</strong></Link></button>
+          </div>
+        </div>
+
+        <div className='navbar-item'>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/GiveRating'><strong>Accepted Loans</strong></Link></button>
           </div>
         </div>
 

@@ -11,7 +11,7 @@ class GiveRating extends Component {
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>
-        Accepted Loans and Rating
+        Accepted Loans / Loan Rating
               </h1>
             </div>
           </div>
