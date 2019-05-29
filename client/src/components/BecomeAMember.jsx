@@ -72,18 +72,18 @@ class BecomeAMember extends Component {
           </div>
         </section>
 
-        <label>
+        <br />
+        <br />
+        <label className='label is-primary'>
           <strong>First Name:</strong>{' '}
           <input
-            type='text'
             name='First_Name'
             value={First_Name}
             onChange={this.handleInput}
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Last Name:</strong>{' '}
           <input
             type='text'
@@ -93,8 +93,7 @@ class BecomeAMember extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Email Address:</strong>{' '}
           <input
             type='text'
@@ -104,8 +103,7 @@ class BecomeAMember extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Current Employer:</strong>{' '}
           <input
             type='text'
@@ -115,8 +113,7 @@ class BecomeAMember extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Job Title:</strong>{' '}
           <input
             type='text'
@@ -126,8 +123,7 @@ class BecomeAMember extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Time Employed At Current Job:</strong>{' '}
           <input
             type='text'
@@ -137,8 +133,7 @@ class BecomeAMember extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Reference:</strong>{' '}
           <input
             type='text'

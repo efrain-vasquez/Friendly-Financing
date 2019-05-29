@@ -63,7 +63,9 @@ class RequestALoan extends Component {
           </div>
         </section>
 
-        <label>
+        <br />
+        <br />
+        <label className='label'>
           <strong>First Name:</strong>{' '}
           <input
             type='text'
@@ -73,8 +75,7 @@ class RequestALoan extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Last Name:</strong>{' '}
           <input
             type='text'
@@ -84,8 +85,7 @@ class RequestALoan extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Amount Requesting:</strong>{' '}
           <input
             type='text'
@@ -95,8 +95,7 @@ class RequestALoan extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Reason For Request (optional):</strong>{' '}
           <input
             type='text'
@@ -106,8 +105,7 @@ class RequestALoan extends Component {
           />
         </label>
 
-        <br />
-        <label>
+        <label className='label'>
           <strong>Willing To Finance Loan:</strong>{' '}
           <input
             type='text'
