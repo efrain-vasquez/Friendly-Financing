@@ -11,7 +11,8 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
-      Lenders_Pay_Pal_Info: ''
+      Lenders_Pay_Pal_Info: '',
+      Submit_Info: ''
     }
 
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
@@ -29,14 +30,15 @@ class LoanAgreementTerms extends Component {
 
   handleLoanTermsSubmit (e) {
     e.preventDefault()
-    const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
+    const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
 
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
       id,
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
-      Lenders_Pay_Pal_Info
+      Lenders_Pay_Pal_Info,
+      Submit_Info
     })
 
     this.setState({
@@ -44,13 +46,14 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
-      Lenders_Pay_Pal_Info: ''
+      Lenders_Pay_Pal_Info: '',
+      Submit_Info: ''
     })
   }
 
   render () {
     const { LoanTermsInfo } = this.props
-    const IndividualLoanTerms = ({ id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info }) =>
+    const IndividualLoanTerms = ({ id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info }) =>
       (<tr>
         <td>
           {`${id}`}
@@ -127,13 +130,22 @@ class LoanAgreementTerms extends Component {
         </td>
 
         <td>
-          <input
-            className='input is-hovered is-primary'
-            type='text'
-            name='Lenders_Pay_Pal_Info'
-            value={Lenders_Pay_Pal_Info}
-            onChange={this.handleLoanTermsInput} />
-          {`${Lenders_Pay_Pal_Info}`}
+          <label>
+            <input
+              className='input is-hovered is-primary'
+              type='text'
+              name='Lenders_Pay_Pal_Info'
+              value={Lenders_Pay_Pal_Info}
+              onChange={this.handleLoanTermsInput} />
+            {`${Lenders_Pay_Pal_Info}`}
+          </label>
+        </td>
+
+        <td>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-bold is-outlined is-normal' onClick={this.handleLoanTermsSubmit}><strong>SUBMIT</strong></button>
+          </div>
+          {`${Submit_Info}`}
         </td>
       </tr>)
 
@@ -144,7 +156,7 @@ class LoanAgreementTerms extends Component {
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>
-        Terms Of Loan Agreement
+        Terms Of Loan From Lender
               </h1>
             </div>
           </div>
@@ -152,11 +164,12 @@ class LoanAgreementTerms extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-              <th>ID Of Requested Loan:</th>
+              <th>ID Of Loan That Has Been Requested:</th>
               <th>Interest On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number of Payments:</th>
               <th>Lenders Pay Pal Info:</th>
+              <th>Submit Info:</th>
             </tr>
           </thead>
 
@@ -168,15 +181,19 @@ class LoanAgreementTerms extends Component {
                 Repayment_Schedule={listItem.Repayment_Schedule}
                 Number_Of_Payments={listItem.Number_Of_Payments}
                 Lenders_Pay_Pal_Info={listItem.Lenders_Pay_Pal_Info}
+                Submit_Info={listItem.Submit_Info}
               />
             ))}
           </tbody>
 
         </table>
       </div>
-
     )
   }
 }
 
 export default LoanAgreementTerms
+
+// <div className='button is-primary is-outlined is-small'>
+//   <button className='button is-text is-outlined is-normal' onClick={this.handleSubmit}><strong>SUBMIT</strong></button>
+// </div>

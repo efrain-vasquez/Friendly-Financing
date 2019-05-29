@@ -111,8 +111,8 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/BecomeAMember' render={(props) => <BecomeAMember {...props} MembersInfo={MembersInfo} postData={this.postData} />} />
-            <Route exact path='/Members' render={(props) => <Members {...props} MembersInfo={MembersInfo} getData={this.getData} />} />
+            <Route exact path='/BecomeAMember' render={(props) => <BecomeAMember {...props} MembersInfo={MembersInfo} getData={this.getData} postData={this.postData} />} />
+            <Route exact path='/Members' render={(props) => <Members {...props} MembersInfo={MembersInfo} getData={this.getData} postData={this.postData} />} />
             <Route exact path='/RequestALoan' render={(props) => <RequestALoan {...props} LoanData={LoanData} getMembersLoanRequestData={this.getMembersLoanRequestData} postMembersLoanRequestData={this.postMembersLoanRequestData} />} />
             <Route exact path='/PendingLoans' render={(props) => <PendingLoans {...props} LoanData={LoanData} postMembersLoanRequestData={this.postMembersLoanRequestData} getMembersLoanRequestData={this.getMembersLoanRequestData} />} />
             <Route exact path='/LoanAgreementTerms' render={(props) => <LoanAgreementTerms {...props} LoanTermsInfo={LoanTermsInfo} postMembersLoanTermsData={this.postMembersLoanTermsData} getMembersLoanTermsData={this.getMembersLoanTermsData} />} />

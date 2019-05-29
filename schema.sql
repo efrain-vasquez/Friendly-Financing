@@ -12,8 +12,6 @@ CREATE DATABASE Members;
 USE Members;
 
 CREATE TABLE IF NOT EXISTS MembersInfo (
-  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Date_Of_Entry DATE NOT NULL,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Email_Address VARCHAR(50) NOT NULL,
@@ -23,13 +21,11 @@ CREATE TABLE IF NOT EXISTS MembersInfo (
   Reference VARCHAR(50) NOT NULL
   ); 
 
- INSERT INTO MembersInfo (id, Date_Of_Entry, First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference) 
-               VALUES (id, curdate(), "Efrain", "Vasquez Arias", "efrain.vasquez.arias@gmail.com", "HolaCode", "Student", "4 Months", "Marco Castillo");
+ INSERT INTO MembersInfo (First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference) 
+               VALUES ("Efrain", "Vasquez Arias", "efrain.vasquez.arias@gmail.com", "HolaCode", "Student", "4 Months", "Marco Castillo");
 
 
 CREATE TABLE IF NOT EXISTS LoanRequestInfo (
-  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Date_Of_Entry DATE NOT NULL,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Amount_Requesting VARCHAR(50) NOT NULL,
@@ -38,8 +34,8 @@ CREATE TABLE IF NOT EXISTS LoanRequestInfo (
   );
 
 
-INSERT INTO LoanRequestInfo (id, Date_Of_Entry, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan) 
-               VALUES (id, curdate(), "Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "");
+INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan) 
+               VALUES ("Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "hello");
 
 
 
@@ -49,12 +45,13 @@ CREATE TABLE IF NOT EXISTS LoanTermsInfo (
   Interest_On_Loan VARCHAR(50) NOT NULL,
   Repayment_Schedule VARCHAR(50) NOT NULL,
   Number_Of_Payments VARCHAR(50) NOT NULL,
-  Lenders_Pay_Pal_Info VARCHAR(10) NOT NULL
+  Lenders_Pay_Pal_Info VARCHAR(10) NOT NULL,
+  Submit_Info VARCHAR(10) NOT NULL
   );
 
 
-INSERT INTO LoanTermsInfo (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) 
-               VALUES (id, "", "", "", "");
+INSERT INTO LoanTermsInfo (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info) 
+               VALUES (id, "", "", "", "", "");
 
 
 /*

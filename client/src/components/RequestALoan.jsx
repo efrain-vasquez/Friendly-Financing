@@ -27,25 +27,27 @@ class RequestALoan extends Component {
 
   handleLoanRequestSubmit (e) {
     e.preventDefault()
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = this.state
 
     this.props.postMembersLoanRequestData('/LoanRequestInfo', {
       First_Name,
       Last_Name,
       Amount_Requesting,
-      Reason_For_Request
+      Reason_For_Request,
+      Willing_To_Finance_Loan
     })
 
     this.setState({
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: ''
+      Reason_For_Request: '',
+      Willing_To_Finance_Loan: ''
     })
   }
 
   render () {
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = this.state
     const { postMembersLoanRequestData } = this.props
     return (
       <div>
@@ -105,8 +107,19 @@ class RequestALoan extends Component {
         </label>
 
         <br />
+        <label>
+          <strong>Willing To Finance Loan:</strong>{' '}
+          <input
+            type='text'
+            name='Willing_To_Finance_Loan'
+            value={Willing_To_Finance_Loan}
+            onChange={this.handleLoanRequestInput}
+          />
+        </label>
+
+        <br />
         <div className='button is-primary is-outlined is-small'>
-          <button className='button is-text is-outlined is-normal' onClick={this.handleSubmit}><strong>SUBMIT</strong></button>
+          <button className='button is-text is-outlined is-normal' onClick={this.handleLoanRequestSubmit}><strong>SUBMIT</strong></button>
         </div>
       </div>
     )

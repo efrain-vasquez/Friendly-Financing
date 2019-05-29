@@ -83,8 +83,8 @@ function getThisLoanTermsData (request, response) {
 
 function postThisLoanTermsData (request, response) {
   console.log(response)
-  const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = request.body
-  db.postLoanTermsData(id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, (res) => {
+  const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = request.body
+  db.postLoanTermsData(id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info, (res) => {
     response
       .status(200)
       .send(res)

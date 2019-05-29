@@ -10,14 +10,8 @@ class PendingLoans extends Component {
 
   render () {
     const { LoanData } = this.props
-    const IndividualRequest = ({ id, Date_Of_Entry, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan }) =>
-      (<tr><td>{`${id}`}</td><td>{`${Date_Of_Entry}`}</td><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Amount_Requesting}`}</td><td>{`${Reason_For_Request}`}</td><td>
-        <div class='select is-primary is-hovered'>
-          <select>
-            <option>Yes</option>
-          </select>
-        </div>
-        {`${Willing_To_Finance_Loan}`}</td></tr>)
+    const IndividualRequest = ({ First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan }) =>
+      (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Amount_Requesting}`}</td><td>{`${Reason_For_Request}`}</td><td>{`${Willing_To_Finance_Loan}`}</td></tr>)
 
     return (
       <div>
@@ -32,8 +26,6 @@ class PendingLoans extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-              <th>Requested Loan ID:</th>
-              <th>Date Of Entry:</th>
               <th>First Name:</th>
               <th>Last Name:</th>
               <th>Amount Requesting:</th>
@@ -44,8 +36,6 @@ class PendingLoans extends Component {
           <tbody>
             {LoanData.map(listItem => (
               <IndividualRequest
-                key={listItem.id}
-                Date_Of_Entry={listItem.Date_Of_Entry}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}
                 Amount_Requesting={listItem.Amount_Requesting}
@@ -62,3 +52,9 @@ class PendingLoans extends Component {
 }
 
 export default PendingLoans
+
+// <div class='select is-primary is-hovered'>
+//           <select>
+//             <option>Yes</option>
+//           </select>
+//         </div>
