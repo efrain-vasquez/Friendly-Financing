@@ -74,7 +74,7 @@ class BecomeAMember extends Component {
 
         <br />
         <br />
-        <label className='label is-primary'>
+        <label className='label'>
           <strong>First Name:</strong>{' '}
           <input
             name='First_Name'

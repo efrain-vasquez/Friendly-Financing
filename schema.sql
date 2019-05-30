@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS MembersInfo (
 
 
 CREATE TABLE IF NOT EXISTS LoanRequestInfo (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Amount_Requesting VARCHAR(50) NOT NULL,
@@ -41,17 +42,16 @@ INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_Fo
 
 
 CREATE TABLE IF NOT EXISTS LoanTermsInfo (
-  id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  
   Interest_On_Loan VARCHAR(50) NOT NULL,
   Repayment_Schedule VARCHAR(50) NOT NULL,
   Number_Of_Payments VARCHAR(50) NOT NULL,
-  Lenders_Pay_Pal_Info VARCHAR(10) NOT NULL,
-  Submit_Info VARCHAR(10) NOT NULL
+  Lenders_Pay_Pal_Info VARCHAR(99) NOT NULL
   );
 
 
-INSERT INTO LoanTermsInfo (id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info) 
-               VALUES (id, "", "", "", "", "");
+INSERT INTO LoanTermsInfo (Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) 
+               VALUES ("10 percent", "Weekly", "7", "My pay pal info");
 
 
 /*

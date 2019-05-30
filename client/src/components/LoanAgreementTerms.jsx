@@ -7,12 +7,10 @@ class LoanAgreementTerms extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
-      Lenders_Pay_Pal_Info: '',
-      Submit_Info: ''
+      Lenders_Pay_Pal_Info: ''
     }
 
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
@@ -31,29 +29,25 @@ class LoanAgreementTerms extends Component {
   handleLoanTermsSubmit (e) {
     e.preventDefault()
     const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
-
+    console.log('working')
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
-      id,
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
-      Lenders_Pay_Pal_Info,
-      Submit_Info
+      Lenders_Pay_Pal_Info
     })
 
     this.setState({
-      id: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
-      Lenders_Pay_Pal_Info: '',
-      Submit_Info: ''
+      Lenders_Pay_Pal_Info: ''
     })
   }
 
   render () {
     const { LoanTermsInfo } = this.props
-    const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
+    const { Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
     return (
       <div>
         <Header />
@@ -69,7 +63,7 @@ class LoanAgreementTerms extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-              <th>ID Of Loan That Has Been Requested:</th>
+
               <th>Interest On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number of Payments:</th>
@@ -80,18 +74,14 @@ class LoanAgreementTerms extends Component {
           <tbody>
             <tr>
               <td>
-                {`${id}`}
-              </td>
-              <td>
                 <div className='field'>
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
-                        className='input is-hovered'
-                        placeholder='Hovered input'
                         name='Interest_On_Loan'
                         value={Interest_On_Loan}
-                        onChange={this.handleLoanTermsInput}>
+                        onChange={this.handleLoanTermsInput}
+                        placeholder='Hovered input'>
                         <option value='5 Percent'>5 Percent</option>
                         <option value='10 Percent'>10 Percent</option>
                         <option value='15 Percent'>15 Percent</option>
@@ -101,18 +91,16 @@ class LoanAgreementTerms extends Component {
                     </div>
                   </div>
                 </div>
-                {`${Interest_On_Loan}`}
               </td>
               <td>
                 <div className='field'>
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
-                        className='input is-hovered'
-                        placeholder='Hovered input'
                         name='Repayment_Schedule'
                         value={Repayment_Schedule}
-                        onChange={this.handleLoanTermsInput}>
+                        onChange={this.handleLoanTermsInput}
+                        placeholder='Hovered input'>
                         <option value='Weekly'>Weekly</option>
                         <option value='Bi-Weekly'>Bi-Weekly</option>
                         <option value='Monthly'>Monthly</option>
@@ -121,18 +109,16 @@ class LoanAgreementTerms extends Component {
                     </div>
                   </div>
                 </div>
-                {`${Repayment_Schedule}`}
               </td>
               <td>
                 <div className='field'>
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
-                        className='input is-hovered'
-                        placeholder='Hovered input'
                         name='Number_Of_Payments'
                         value={Number_Of_Payments}
-                        onChange={this.handleLoanTermsInput}>
+                        onChange={this.handleLoanTermsInput}
+                        placeholder='Hovered input'>
                         <option value='1 Payment'>1 Payment</option>
                         <option value='2 Payments'>2 Payments</option>
                         <option value='3 Payments'>3 Payments</option>
@@ -147,7 +133,6 @@ class LoanAgreementTerms extends Component {
                     </div>
                   </div>
                 </div>
-                {`${Number_Of_Payments}`}
               </td>
               <td>
                 <label>
@@ -157,14 +142,12 @@ class LoanAgreementTerms extends Component {
                     name='Lenders_Pay_Pal_Info'
                     value={Lenders_Pay_Pal_Info}
                     onChange={this.handleLoanTermsInput} />
-                  {`${Lenders_Pay_Pal_Info}`}
                 </label>
               </td>
               <td>
                 <div className='button is-primary is-outlined is-small'>
                   <button className='button is-text is-bold is-outlined is-normal' onClick={this.handleLoanTermsSubmit}><strong>SUBMIT</strong></button>
                 </div>
-                {`${Submit_Info}`}
               </td>
             </tr>
           </tbody>
@@ -175,3 +158,55 @@ class LoanAgreementTerms extends Component {
 }
 
 export default LoanAgreementTerms
+// <div class="field">
+//          <div class="control">
+//          <label class="label">Select</label>
+//          <div class="select">
+//          <select
+//            class="input is-hovered"
+//            placeholder="Hovered input"
+//            name="gender"
+//            value={gender}
+//            onChange={this.handleInput}
+//            >
+//            <option value="female">FEMALE</option>
+//            <option value="male">MALE</option>
+//          </select>
+
+// <td>
+//                <div class='dropdown is-active'>
+//                  <div class='dropdown-trigger'>
+//                    <button class='button' aria-haspopup='true' aria-controls='dropdown-menu'>
+//                      <span>Interest On Loan</span>
+//                      <span class='icon is-small'>
+//                        <i class='fas fa-angle-down' aria-hidden='true' />
+//                      </span>
+//                    </button>
+//                  </div>
+//                  <div class='dropdown-menu' id='dropdown-menu' role='menu'>
+//                    <div class='dropdown-content'>
+//                      <input
+//                        name='Interest_On_Loan'
+//                        value={Interest_On_Loan}
+//                        onChange={this.handleLoanTermsInput} />
+//                      <a href='#' class='dropdown-item'>
+//                        <option value='5 Percent'>5 Percent</option>
+//                      </a>
+//                      <a class='dropdown-item'>
+//                        <option value='10 Percent'>10 Percent</option>
+//                      </a>
+//                      <a href='#' class='dropdown-item'>
+//                        <option value='15 Percent'>15 Percent</option>
+//                      </a>
+//                      <a href='#' class='dropdown-item'>
+//                        <option value='20 Percent'>20 Percent</option>
+//                      </a>
+//                      <a href='#' class='dropdown-item'>
+//                        <option value='25 Percent'>25 Percent</option>
+//                      </a>
+//                    </div>
+//                  </div>
+//                </div>
+//              </td>
+
+//              <td>

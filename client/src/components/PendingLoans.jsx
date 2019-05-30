@@ -10,6 +10,7 @@ class PendingLoans extends Component {
 
   render () {
     const { LoanData } = this.props
+    console.log(LoanData)
     const IndividualRequest = ({ First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan }) =>
       (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Amount_Requesting}`}</td><td>{`${Reason_For_Request}`}</td><td>{`${Willing_To_Finance_Loan}`}</td></tr>)
 
@@ -36,6 +37,7 @@ class PendingLoans extends Component {
           <tbody>
             {LoanData.map(listItem => (
               <IndividualRequest
+                key={listItem.id}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}
                 Amount_Requesting={listItem.Amount_Requesting}
@@ -52,9 +54,3 @@ class PendingLoans extends Component {
 }
 
 export default PendingLoans
-
-// <div class='select is-primary is-hovered'>
-//           <select>
-//             <option>Yes</option>
-//           </select>
-//         </div>
