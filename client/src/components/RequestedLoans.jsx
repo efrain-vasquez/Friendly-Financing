@@ -10,20 +10,29 @@ class RequestedLoans extends Component {
     this.handleSubmitWillingToFinanceButton = this.handleSubmitWillingToFinanceButton.bind(this)
   }
 
-  handleSubmitWillingToFinanceButton () {
-    this.props.updateLoanAgreementTerms()
+  handleSubmitWillingToFinanceButton (arg) {
+    this.props.updateLoanAgreementTerms(arg)
   }
 
   render () {
     const { LoanRequestInfo, updateLoanAgreementTerms } = this.props
-    console.log(this.props.listItem)
-    const IndividualRequest = ({ Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan }) =>
-      (<tr><td>{`${Loan_ID}`}</td><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Amount_Requesting}`}</td><td>{`${Reason_For_Request}`}</td>
+    const IndividualRequest = 
+    ({ Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request }) =>
+      (<tr>
+          <td>{`${Loan_ID}`}</td>
+          <td>{`${First_Name}`}</td>
+          <td>{`${Last_Name}`}</td>
+          <td>{`${Amount_Requesting}`}</td>
+          <td>{`${Reason_For_Request}`}</td>
         <td>
           <div className='button is-primary is-outlined is-small'>
-            <button className='button is-text is-bold is-outlined is-normal' onClick={this.handleSubmitWillingToFinanceButton}><Link to='/LoanAgreementTerms'>Willing To Lend</Link></button>
+            <button className='button is-text is-bold is-outlined is-normal' 
+              onClick={() => {this.handleSubmitWillingToFinanceButton(Loan_ID)}}>
+                <Link to='/LoanAgreementTerms'>Willing To Lend</Link>
+            </button>
           </div>
-        </td></tr>)
+        </td>
+      </tr>)
     return (
       <div>
         <Header />
@@ -53,7 +62,6 @@ class RequestedLoans extends Component {
                 Last_Name={listItem.Last_Name}
                 Amount_Requesting={listItem.Amount_Requesting}
                 Reason_For_Request={listItem.Reason_For_Request}
-                Willing_To_Finance_Loan={listItem.Willing_To_Finance_Loan}
               />
             ))}
           </tbody>

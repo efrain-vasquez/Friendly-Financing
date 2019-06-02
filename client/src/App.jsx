@@ -14,6 +14,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      currentID: "teststeset",
       MembersInfo: [],
       LoanRequestInfo: [],
       LoanTermsInfo: []
@@ -108,12 +109,16 @@ class App extends Component {
   // this function will be triggered by an event handler in RequestedLoans and
   // will pass the Loan_Id to LoanAgreementTerms as props. Pass this function
   // through props to RequestedLoans component
-  updateLoanAgreementTerms () {
-    console.log('This updateLoanAgreementTerms is Working')
+  updateLoanAgreementTerms (arg) {
+    this.setState({
+      currentID : arg
+    })
+    console.log(this.state.currentID)
   }
+  
 
   render () {
-    const { MembersInfo, LoanRequestInfo, LoanTermsInfo } = this.state
+    const { MembersInfo, LoanRequestInfo, LoanTermsInfo} = this.state
     return (
       <BrowserRouter>
         <div>
@@ -123,7 +128,7 @@ class App extends Component {
             <Route exact path='/Members' render={(props) => <Members {...props} MembersInfo={MembersInfo} getData={this.getData} postData={this.postData} />} />
             <Route exact path='/RequestALoan' render={(props) => <RequestALoan {...props} LoanRequestInfo={LoanRequestInfo} getMembersLoanRequestData={this.getMembersLoanRequestData} postMembersLoanRequestData={this.postMembersLoanRequestData} />} />
             <Route exact path='/RequestedLoans' render={(props) => <RequestedLoans {...props} updateLoanAgreementTerms={this.updateLoanAgreementTerms} LoanRequestInfo={LoanRequestInfo} postMembersLoanRequestData={this.postMembersLoanRequestData} getMembersLoanRequestData={this.getMembersLoanRequestData} />} />
-            <Route exact path='/LoanAgreementTerms' render={(props) => <LoanAgreementTerms {...props} LoanTermsInfo={LoanTermsInfo} LoanRequestInfo={LoanRequestInfo} postMembersLoanTermsData={this.postMembersLoanTermsData} getMembersLoanTermsData={this.getMembersLoanTermsData} />} />
+            <Route exact path='/LoanAgreementTerms' render={(props) => <LoanAgreementTerms {...props}          LoanTermsInfo={LoanTermsInfo} LoanRequestInfo={LoanRequestInfo} postMembersLoanTermsData={this.postMembersLoanTermsData} getMembersLoanTermsData={this.getMembersLoanTermsData} />} />
             <Route exact path='/GiveRating' component={GiveRating} />
           </Switch>
         </div>
