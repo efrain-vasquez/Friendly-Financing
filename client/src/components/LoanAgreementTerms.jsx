@@ -8,7 +8,7 @@ class LoanAgreementTerms extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      MemberLoan_ID: '1337',
+      MemberLoan_ID: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
@@ -21,8 +21,9 @@ class LoanAgreementTerms extends Component {
   }
 
   componentDidMount () {
-
-    // console.log(this.state.MemberLoan_ID)
+    this.setState({
+      MemberLoan_ID : this.props.currentID
+    })
   }
 
   // getMemberLoanID (url = '') {
@@ -70,6 +71,7 @@ class LoanAgreementTerms extends Component {
     const { LoanTermsInfo, LoanRequestInfo } = this.props
     const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
     const IndividualLoan_IDRequest = ({ Loan_ID }) => (`${Loan_ID}`)
+    console.log(this.props.currentID)
 
     return (
       <div>

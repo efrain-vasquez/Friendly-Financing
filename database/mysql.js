@@ -4,7 +4,7 @@ const mysql = require('mysql2')
 const config = {
   host: 'localhost',
   user: 'root',
-  password: 'Holacode1',
+  password: 'Holacode',
   database: 'Members'
 }
 
