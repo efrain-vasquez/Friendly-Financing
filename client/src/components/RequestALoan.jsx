@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
-import PendingLoans from './PendingLoans.jsx'
+import RequestedLoans from './RequestedLoans.jsx'
 
 class RequestALoan extends Component {
   constructor (props) {
@@ -27,27 +27,25 @@ class RequestALoan extends Component {
 
   handleLoanRequestSubmit (e) {
     e.preventDefault()
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
 
     this.props.postMembersLoanRequestData('/LoanRequestInfo', {
       First_Name,
       Last_Name,
       Amount_Requesting,
-      Reason_For_Request,
-      Willing_To_Finance_Loan
+      Reason_For_Request
     })
 
     this.setState({
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: '',
-      Willing_To_Finance_Loan: ''
+      Reason_For_Request: ''
     })
   }
 
   render () {
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
     const { postMembersLoanRequestData } = this.props
     return (
       <div>
@@ -72,6 +70,7 @@ class RequestALoan extends Component {
             name='First_Name'
             value={First_Name}
             onChange={this.handleLoanRequestInput}
+            autocomplete='off'
           />
         </label>
 
@@ -82,6 +81,7 @@ class RequestALoan extends Component {
             name='Last_Name'
             value={Last_Name}
             onChange={this.handleLoanRequestInput}
+            autocomplete='off'
           />
         </label>
 
@@ -92,6 +92,7 @@ class RequestALoan extends Component {
             name='Amount_Requesting'
             value={Amount_Requesting}
             onChange={this.handleLoanRequestInput}
+            autocomplete='off'
           />
         </label>
 
@@ -102,16 +103,7 @@ class RequestALoan extends Component {
             name='Reason_For_Request'
             value={Reason_For_Request}
             onChange={this.handleLoanRequestInput}
-          />
-        </label>
-
-        <label className='label'>
-          <strong>Willing To Finance Loan:</strong>{' '}
-          <input
-            type='text'
-            name='Willing_To_Finance_Loan'
-            value={Willing_To_Finance_Loan}
-            onChange={this.handleLoanRequestInput}
+            autocomplete='off'
           />
         </label>
 
@@ -125,3 +117,14 @@ class RequestALoan extends Component {
 }
 
 export default RequestALoan
+
+// <label className='label'>
+//   <strong>Willing To Finance Loan:</strong>{' '}
+//   <input
+//     type='text'
+//     name='Willing_To_Finance_Loan'
+//     value={Willing_To_Finance_Loan}
+//     onChange={this.handleLoanRequestInput}
+//     autocomplete='off'
+//   />
+// </label>

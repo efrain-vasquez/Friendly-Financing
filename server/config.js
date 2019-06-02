@@ -24,6 +24,7 @@ app.get('/LoanRequestInfo', getThisLoanRequestData)
 app.post('/LoanRequestInfo', postThisLoanRequestData)
 app.get('/LoanTermsInfo', getThisLoanTermsData)
 app.post('/LoanTermsInfo', postThisLoanTermsData)
+app.get('/LoanTermsInfo', getTheIDFromLoanRequestInfo)
 
 // react-router fallback so we can reload without visiting root
 app.get('/*', function (req, res) {
@@ -35,7 +36,6 @@ app.get('/*', function (req, res) {
 })
 
 function getThisData (request, response) {
-  console.log('getThisData server fires')
   db.getMyData(data => {
     response
       .status(200)
@@ -44,7 +44,6 @@ function getThisData (request, response) {
 };
 
 function postThisData (request, response) {
-  console.log(response)
   const { First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference } = request.body
   db.postMyData(First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference, (res) => {
     response
@@ -63,9 +62,8 @@ function getThisLoanRequestData (request, response) {
 };
 
 function postThisLoanRequestData (request, response) {
-  console.log(response)
-  const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan } = request.body
-  db.postLoanRequestData(First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan, (res) => {
+  const { Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = request.body
+  db.postLoanRequestData(Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, (res) => {
     response
       .status(200)
       .send(res)
@@ -82,12 +80,20 @@ function getThisLoanTermsData (request, response) {
 };
 
 function postThisLoanTermsData (request, response) {
-  console.log(response)
-  const { Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = request.body
-  db.postLoanTermsData(Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, (res) => {
+  const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = request.body
+  db.postLoanTermsData(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, (res) => {
     response
       .status(200)
       .send(res)
+      .end()
+  })
+};
+
+function getTheIDFromLoanRequestInfo (request, response) {
+  db.getIDFromLoanRequestInfo(dataIDFromLoanRequestInfo => {
+    response
+      .status(200)
+      .send(dataIDFromLoanRequestInfo)
       .end()
   })
 };

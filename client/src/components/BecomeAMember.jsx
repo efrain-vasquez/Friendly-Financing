@@ -66,7 +66,7 @@ class BecomeAMember extends Component {
         Become A Member
               </h1>
               <h2 className='subtitle'>
-                <strong>Become A Community!</strong>
+                <strong>Become Part Of A Community!</strong>
               </h2>
             </div>
           </div>
@@ -80,6 +80,7 @@ class BecomeAMember extends Component {
             name='First_Name'
             value={First_Name}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -90,6 +91,7 @@ class BecomeAMember extends Component {
             name='Last_Name'
             value={Last_Name}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -100,6 +102,7 @@ class BecomeAMember extends Component {
             name='Email_Address'
             value={Email_Address}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -110,6 +113,7 @@ class BecomeAMember extends Component {
             name='Current_Employer'
             value={Current_Employer}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -120,6 +124,7 @@ class BecomeAMember extends Component {
             name='Job_Title'
             value={Job_Title}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -130,6 +135,7 @@ class BecomeAMember extends Component {
             name='Time_Employed_At_Current_Job'
             value={Time_Employed_At_Current_Job}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 
@@ -140,6 +146,7 @@ class BecomeAMember extends Component {
             name='Reference'
             value={Reference}
             onChange={this.handleInput}
+            autocomplete='off'
           />
         </label>
 

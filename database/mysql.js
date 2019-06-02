@@ -21,7 +21,6 @@ module.exports.getMyData = cb => {
     if (error) {
       throw error
     } else {
-      console.log('this is getMyData from mysql query', results)
       cb(results)
     }
   })
@@ -35,7 +34,6 @@ module.exports.postMyData = function (First_Name, Last_Name, Email_Address, Curr
       if (error) {
         cb(error)
       } else {
-        console.log('this is postMyData from mysql query', results)
         cb(results)
       }
     }
@@ -47,21 +45,19 @@ module.exports.getLoanRequestData = cb => {
     if (error) {
       throw error
     } else {
-      console.log('this is getLoanRequestData from mysql query', results)
       cb(results)
     }
   })
 }
 
-module.exports.postLoanRequestData = function (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan, cb) {
+module.exports.postLoanRequestData = function (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, cb) {
   connection.query(
-    'INSERT INTO LoanRequestInfo (First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan) VALUES (?, ?, ?, ?, ?);',
-    [First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Willing_To_Finance_Loan],
+    'INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request) VALUES (?, ?, ?, ?, ?);',
+    [Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request],
     (error, results) => {
       if (error) {
         cb(error)
       } else {
-        console.log('this is postLoanRequestData from mysql query', results)
         cb(results)
       }
     }
@@ -73,23 +69,32 @@ module.exports.getLoanTermsData = cb => {
     if (error) {
       throw error
     } else {
-      console.log('this is getLoanTermsRequestData from mysql query', results)
       cb(results)
     }
   })
 }
 
-module.exports.postLoanTermsData = function (Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, cb) {
+module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO LoanTermsInfo (Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?);',
-    [Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info],
+    'INSERT INTO LoanTermsInfo (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?);',
+    [MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)
       } else {
-        console.log('this is postLoanTermsRequestData from mysql query', results)
         cb(results)
       }
     }
   )
+}
+
+module.exports.getIDFromLoanRequestInfo = cb => {
+  connection.query('SELECT Loan_ID FROM LoanRequestInfo', (error, resultsIDFromLoanRequestInfo) => {
+    if (error) {
+      throw error
+    } else {
+      console.log('this is from mysql getIDFromLoanRequestInfo query', resultsIDFromLoanRequestInfo)
+      cb(resultsIDFromLoanRequestInfo)
+    }
+  })
 }

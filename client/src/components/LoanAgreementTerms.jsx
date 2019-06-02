@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import Header from './Header.jsx'
 import App from '../App.jsx'
 import RequestALoan from './RequestALoan.jsx'
+import PendingLoaneeApproval from './PendingLoaneeApproval.jsx'
 
 class LoanAgreementTerms extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      MemberLoan_ID: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
@@ -15,7 +17,23 @@ class LoanAgreementTerms extends Component {
 
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
     this.handleLoanTermsSubmit = this.handleLoanTermsSubmit.bind(this)
+    // this.getMemberLoanID = this.getMemberLoanID.bind(this)
   }
+
+  componentDidMount () {
+    // this.getMemberLoanID('/LoanTermsInfo')
+  }
+
+  // getMemberLoanID (url = '') {
+  //   return fetch(url)
+  //     .then(response => response.json())
+  //     .then(dataIDFromLoanRequestInfo => {
+  //       this.setState({
+  //         Loan_ID: dataIDFromLoanRequestInfo[0].Loan_ID
+  //       })
+  //     })
+  //     .catch(err => console.error(err))
+  // }
 
   handleLoanTermsInput (e) {
     const { target } = e
@@ -28,9 +46,9 @@ class LoanAgreementTerms extends Component {
 
   handleLoanTermsSubmit (e) {
     e.preventDefault()
-    const { id, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
-    console.log('working')
+    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
+      MemberLoan_ID,
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
@@ -38,6 +56,7 @@ class LoanAgreementTerms extends Component {
     })
 
     this.setState({
+      MemberLoan_ID: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
@@ -45,9 +64,13 @@ class LoanAgreementTerms extends Component {
     })
   }
 
+  // console.log(this.props.LoanRequestInfo[0])
   render () {
-    const { LoanTermsInfo } = this.props
-    const { Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
+    const { LoanTermsInfo, LoanRequestInfo } = this.props
+    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
+    const IndividualLoan_IDRequest = ({ Loan_ID }) => (`${Loan_ID}`)
+    console.log('test')
+    console.log(LoanRequestInfo)
     return (
       <div>
         <Header />
@@ -63,8 +86,8 @@ class LoanAgreementTerms extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-
-              <th>Interest On Loan:</th>
+              <th>ID Of Loan To Be Financed:</th>
+              <th>Interest Rate On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number of Payments:</th>
               <th>Lenders Pay Pal Information:</th>
@@ -73,6 +96,12 @@ class LoanAgreementTerms extends Component {
           </thead>
           <tbody>
             <tr>
+              <td>
+                <label>
+                  {LoanRequestInfo.map(listItem => (
+                    <IndividualLoan_IDRequest Loan_ID={listItem.Loan_ID} />))}
+                </label>
+              </td>
               <td>
                 <div className='field'>
                   <div className='control'>
@@ -152,61 +181,10 @@ class LoanAgreementTerms extends Component {
             </tr>
           </tbody>
         </table>
+        <PendingLoaneeApproval />
       </div>
     )
   }
 }
 
 export default LoanAgreementTerms
-// <div class="field">
-//          <div class="control">
-//          <label class="label">Select</label>
-//          <div class="select">
-//          <select
-//            class="input is-hovered"
-//            placeholder="Hovered input"
-//            name="gender"
-//            value={gender}
-//            onChange={this.handleInput}
-//            >
-//            <option value="female">FEMALE</option>
-//            <option value="male">MALE</option>
-//          </select>
-
-// <td>
-//                <div class='dropdown is-active'>
-//                  <div class='dropdown-trigger'>
-//                    <button class='button' aria-haspopup='true' aria-controls='dropdown-menu'>
-//                      <span>Interest On Loan</span>
-//                      <span class='icon is-small'>
-//                        <i class='fas fa-angle-down' aria-hidden='true' />
-//                      </span>
-//                    </button>
-//                  </div>
-//                  <div class='dropdown-menu' id='dropdown-menu' role='menu'>
-//                    <div class='dropdown-content'>
-//                      <input
-//                        name='Interest_On_Loan'
-//                        value={Interest_On_Loan}
-//                        onChange={this.handleLoanTermsInput} />
-//                      <a href='#' class='dropdown-item'>
-//                        <option value='5 Percent'>5 Percent</option>
-//                      </a>
-//                      <a class='dropdown-item'>
-//                        <option value='10 Percent'>10 Percent</option>
-//                      </a>
-//                      <a href='#' class='dropdown-item'>
-//                        <option value='15 Percent'>15 Percent</option>
-//                      </a>
-//                      <a href='#' class='dropdown-item'>
-//                        <option value='20 Percent'>20 Percent</option>
-//                      </a>
-//                      <a href='#' class='dropdown-item'>
-//                        <option value='25 Percent'>25 Percent</option>
-//                      </a>
-//                    </div>
-//                  </div>
-//                </div>
-//              </td>
-
-//              <td>
