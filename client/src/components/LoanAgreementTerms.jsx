@@ -21,7 +21,9 @@ class LoanAgreementTerms extends Component {
   }
 
   componentDidMount () {
-    // this.getMemberLoanID('/LoanTermsInfo')
+    this.setState({
+      MemberLoan_ID : this.props.currentID
+    })
   }
 
   // getMemberLoanID (url = '') {
@@ -69,8 +71,8 @@ class LoanAgreementTerms extends Component {
     const { LoanTermsInfo, LoanRequestInfo } = this.props
     const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
     const IndividualLoan_IDRequest = ({ Loan_ID }) => (`${Loan_ID}`)
-    console.log('test')
-    console.log(LoanRequestInfo)
+    console.log(this.props.currentID)
+
     return (
       <div>
         <Header />
@@ -98,8 +100,7 @@ class LoanAgreementTerms extends Component {
             <tr>
               <td>
                 <label>
-                  {LoanRequestInfo.map(listItem => (
-                    <IndividualLoan_IDRequest Loan_ID={listItem.Loan_ID} />))}
+                  {this.state.MemberLoan_ID}
                 </label>
               </td>
               <td>
