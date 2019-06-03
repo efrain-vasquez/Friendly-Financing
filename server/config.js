@@ -62,8 +62,8 @@ function getThisLoanRequestData (request, response) {
 };
 
 function postThisLoanRequestData (request, response) {
-  const { Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = request.body
-  db.postLoanRequestData(Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, (res) => {
+  const { Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info } = request.body
+  db.postLoanRequestData(Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info, (res) => {
     response
       .status(200)
       .send(res)
@@ -80,8 +80,8 @@ function getThisLoanTermsData (request, response) {
 };
 
 function postThisLoanTermsData (request, response) {
-  const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = request.body
-  db.postLoanTermsData(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, (res) => {
+  const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = request.body
+  db.postLoanTermsData(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, (res) => {
     response
       .status(200)
       .send(res)

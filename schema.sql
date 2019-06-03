@@ -34,15 +34,16 @@ CREATE TABLE IF NOT EXISTS LoanRequestInfo (
   Last_Name VARCHAR(50) NOT NULL,
   Amount_Requesting VARCHAR(50) NOT NULL,
   Reason_For_Request VARCHAR(200) NOT NULL,
+  Loanee_Pay_Pal_Info VARCHAR(50) NOT NULL,
   PRIMARY KEY (Loan_ID)
   );
 
 
-INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request) 
-               VALUES (Loan_ID, "Efrain", "Vasquez Arias", "1000 Pesos", "no comment");
+INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
+               VALUES (Loan_ID, "Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "My Pay Pal Info");
 
-INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request) 
-               VALUES (Loan_ID, "Alex", "Gonzalez", "8000 Pesos", "To Purchase A Laptop");
+INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
+               VALUES (Loan_ID, "Alex", "Gonzalez", "8000 Pesos", "To Purchase A Laptop", "My Pay Pal Info");
 
 
 
@@ -52,6 +53,7 @@ CREATE TABLE IF NOT EXISTS LoanTermsInfo (
   Interest_On_Loan VARCHAR(50) NOT NULL,
   Repayment_Schedule VARCHAR(50) NOT NULL,
   Number_Of_Payments VARCHAR(50) NOT NULL,
+  Loanee_Pay_Pal_Data VARCHAR(50) NOT NULL,
   Lenders_Pay_Pal_Info VARCHAR(99) NOT NULL,
   Primary KEY (ID)
   );

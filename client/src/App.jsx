@@ -16,6 +16,7 @@ class App extends Component {
     super(props)
     this.state = {
       currentID: '',
+      currentLoanee_Pay_Pal_Info: '',
       MembersInfo: [],
       LoanRequestInfo: [],
       LoanTermsInfo: []
@@ -110,14 +111,15 @@ class App extends Component {
   // this function will be triggered by an event handler in RequestedLoans and
   // will pass the Loan_Id to LoanAgreementTerms as props. Pass this function
   // through props to RequestedLoans component
-  updateLoanAgreementTerms (arg) {
+  updateLoanAgreementTerms (Loan_ID, Loanee_Pay_Pal_Info) {
     this.setState({
-      currentID: arg
+      currentID: Loan_ID,
+      currentLoanee_Pay_Pal_Info: Loanee_Pay_Pal_Info
     })
   }
 
   render () {
-    const { currentID, MembersInfo, LoanRequestInfo, LoanTermsInfo } = this.state
+    const { currentID, currentLoanee_Pay_Pal_Info, MembersInfo, LoanRequestInfo, LoanTermsInfo } = this.state
     return (
       <BrowserRouter>
         <div>
@@ -147,6 +149,7 @@ class App extends Component {
             <Route exact path='/LoanAgreementTerms' render={(props) =>
               <LoanAgreementTerms {...props}
                 currentID={currentID}
+                currentLoanee_Pay_Pal_Info={currentLoanee_Pay_Pal_Info}
                 LoanTermsInfo={LoanTermsInfo}
                 LoanRequestInfo={LoanRequestInfo}
                 postMembersLoanTermsData={this.postMembersLoanTermsData} />} />

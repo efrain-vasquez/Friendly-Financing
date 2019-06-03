@@ -50,10 +50,10 @@ module.exports.getLoanRequestData = cb => {
   })
 }
 
-module.exports.postLoanRequestData = function (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, cb) {
+module.exports.postLoanRequestData = function (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request) VALUES (?, ?, ?, ?, ?);',
-    [Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request],
+    'INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?);',
+    [Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)
@@ -74,10 +74,10 @@ module.exports.getLoanTermsData = cb => {
   })
 }
 
-module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, cb) {
+module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO LoanTermsInfo (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?);',
-    [MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info],
+    'INSERT INTO LoanTermsInfo (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?);',
+    [MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)

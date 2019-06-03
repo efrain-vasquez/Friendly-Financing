@@ -10,7 +10,8 @@ class RequestALoan extends Component {
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: ''
+      Reason_For_Request: '',
+      Loanee_Pay_Pal_Info: ''
     }
     this.handleLoanRequestInput = this.handleLoanRequestInput.bind(this)
     this.handleLoanRequestSubmit = this.handleLoanRequestSubmit.bind(this)
@@ -27,25 +28,27 @@ class RequestALoan extends Component {
 
   handleLoanRequestSubmit (e) {
     e.preventDefault()
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info } = this.state
 
     this.props.postMembersLoanRequestData('/LoanRequestInfo', {
       First_Name,
       Last_Name,
       Amount_Requesting,
-      Reason_For_Request
+      Reason_For_Request,
+      Loanee_Pay_Pal_Info
     })
 
     this.setState({
       First_Name: '',
       Last_Name: '',
       Amount_Requesting: '',
-      Reason_For_Request: ''
+      Reason_For_Request: '',
+      Loanee_Pay_Pal_Info: ''
     })
   }
 
   render () {
-    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request } = this.state
+    const { First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info } = this.state
     const { postMembersLoanRequestData } = this.props
     return (
       <div>
@@ -102,6 +105,17 @@ class RequestALoan extends Component {
             type='text'
             name='Reason_For_Request'
             value={Reason_For_Request}
+            onChange={this.handleLoanRequestInput}
+            autocomplete='off'
+          />
+        </label>
+
+        <label className='label'>
+          <strong>Loanee Pay Pal Info:</strong>{' '}
+          <input
+            type='text'
+            name='Loanee_Pay_Pal_Info'
+            value={Loanee_Pay_Pal_Info}
             onChange={this.handleLoanRequestInput}
             autocomplete='off'
           />

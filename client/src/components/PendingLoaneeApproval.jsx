@@ -11,17 +11,18 @@ class PendingLoaneeApproval extends Component {
   render () {
     const { LoanTermsInfo } = this.props
     const IndividualLoanRequest =
-    ({ MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info }) =>
+    ({ MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
       (<tr>
         <td>{`${MemberLoan_ID}`}</td>
         <td>{`${Interest_On_Loan}`}</td>
         <td>{`${Repayment_Schedule}`}</td>
         <td>{`${Number_Of_Payments}`}</td>
+        <td>{`${Loanee_Pay_Pal_Data}`}</td>
         <td>{`${Lenders_Pay_Pal_Info}`}</td>
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={() => { this.handleSubmitWillingToAccepTermsButton(Loan_ID) }}>
+              onClick={() => { this.handleSubmitWillingToAccepTermsButton(MemberLoan_ID, Loanee_Pay_Pal_Data) }}>
               <Link to='/GiveRating'>Willing To Accept Terms</Link>
             </button>
           </div>
@@ -44,6 +45,7 @@ class PendingLoaneeApproval extends Component {
               <th>Interest On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number Of Payments:</th>
+              <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Info:</th>
               <th>Willing To Accept Terms:</th>
             </tr>
@@ -55,6 +57,7 @@ class PendingLoaneeApproval extends Component {
                 Interest_On_Loan={listItem.Interest_On_Loan}
                 Repayment_Schedule={listItem.Repayment_Schedule}
                 Number_Of_Payments={listItem.Number_Of_Payments}
+                Loanee_Pay_Pal_Data={listItem.Loanee_Pay_Pal_Data}
                 Lenders_Pay_Pal_Info={listItem.Lenders_Pay_Pal_Info}
               />
             ))}
@@ -66,73 +69,3 @@ class PendingLoaneeApproval extends Component {
 }
 
 export default PendingLoaneeApproval
-
-// const { LoanTermsInfo } = this.props
-//     return (
-//       <div>
-//         <Header />
-//         <section className='hero is-small is-primary is-bold'>
-//           <div className='hero-body'>
-//             <div className='container'>
-//               <h1 className='title'>
-//         Loans Pending To Be Accepted By Loanee
-//               </h1>
-//             </div>
-//           </div>
-//         </section>
-//         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
-//           <thead>
-//             <tr>
-//               <th>ID Of Loan To Be Financed:</th>
-//               <th>Interest Rate On Loan:</th>
-//               <th>Repayment Schedule:</th>
-//               <th>Number of Payments:</th>
-//               <th>Amount Per Payment:</th>
-//               <th>Lenders Pay Pal Information:</th>
-//               <th>I Agree To Loan Terms:</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             <tr>
-//               <td>
-//                 <div>
-//                1
-//                 </div>
-//               </td>
-//               <td>
-//                 <div>
-//                  2
-//                 </div>
-//               </td>
-//               <td>
-//                 <div>
-//                 3
-//                 </div>
-//               </td>
-//               <td>
-//                 <div>
-//                  4
-//                 </div>
-//               </td>
-//               <td>
-//                 <div>
-//                5
-//                 </div>
-//               </td>
-//               <td>
-//                 <div>
-//                  6
-//                 </div>
-//               </td>
-//               <td>
-//                 <div className='button is-primary is-outlined is-small'>
-//                   <button className='button is-text is-bold is-outlined is-normal' onClick={this.handleSubmitWillingToAcceptLoanTermsButton}><strong>Accept Loan Terms</strong></button>
-//                 </div>
-//               </td>
-//             </tr>
-//           </tbody>
-//         </table>
-//       </div>
-//     )
-//   }
-// }

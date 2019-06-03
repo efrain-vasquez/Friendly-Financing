@@ -10,24 +10,25 @@ class RequestedLoans extends Component {
     this.handleSubmitWillingToFinanceButton = this.handleSubmitWillingToFinanceButton.bind(this)
   }
 
-  handleSubmitWillingToFinanceButton (arg) {
-    this.props.updateLoanAgreementTerms(arg)
+  handleSubmitWillingToFinanceButton (Loan_ID, Loanee_Pay_Pal_Info) {
+    this.props.updateLoanAgreementTerms(Loan_ID, Loanee_Pay_Pal_Info)
   }
 
   render () {
     const { LoanRequestInfo, updateLoanAgreementTerms } = this.props
     const IndividualRequest =
-    ({ Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request }) =>
+    ({ Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info }) =>
       (<tr>
         <td>{`${Loan_ID}`}</td>
         <td>{`${First_Name}`}</td>
         <td>{`${Last_Name}`}</td>
         <td>{`${Amount_Requesting}`}</td>
         <td>{`${Reason_For_Request}`}</td>
+        <td>{`${Loanee_Pay_Pal_Info}`}</td>
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={() => { this.handleSubmitWillingToFinanceButton(Loan_ID) }}>
+              onClick={() => { this.handleSubmitWillingToFinanceButton(Loan_ID, Loanee_Pay_Pal_Info) }}>
               <Link to='/LoanAgreementTerms'>Willing To Lend</Link>
             </button>
           </div>
@@ -51,6 +52,7 @@ class RequestedLoans extends Component {
               <th>Last Name:</th>
               <th>Amount Requesting:</th>
               <th>Reason For Request (optional):</th>
+              <th>Loanee Pay Pal Info:</th>
               <th>Willing To Finance Loan:</th>
             </tr>
           </thead>
@@ -62,6 +64,7 @@ class RequestedLoans extends Component {
                 Last_Name={listItem.Last_Name}
                 Amount_Requesting={listItem.Amount_Requesting}
                 Reason_For_Request={listItem.Reason_For_Request}
+                Loanee_Pay_Pal_Info={listItem.Loanee_Pay_Pal_Info}
               />
             ))}
           </tbody>

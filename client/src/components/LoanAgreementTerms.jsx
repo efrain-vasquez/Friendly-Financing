@@ -12,6 +12,7 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
+      Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     }
 
@@ -22,7 +23,8 @@ class LoanAgreementTerms extends Component {
 
   componentDidMount () {
     this.setState({
-      MemberLoan_ID: this.props.currentID
+      MemberLoan_ID: this.props.currentID,
+      Loanee_Pay_Pal_Data: this.props.currentLoanee_Pay_Pal_Info
     })
   }
 
@@ -48,12 +50,13 @@ class LoanAgreementTerms extends Component {
 
   handleLoanTermsSubmit (e) {
     e.preventDefault()
-    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info, Submit_Info } = this.state
+    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, Submit_Info } = this.state
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
       MemberLoan_ID,
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
+      Loanee_Pay_Pal_Data,
       Lenders_Pay_Pal_Info
     })
 
@@ -62,6 +65,7 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
+      Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     })
   }
@@ -69,7 +73,7 @@ class LoanAgreementTerms extends Component {
   // console.log(this.props.LoanRequestInfo[0])
   render () {
     const { LoanTermsInfo, LoanRequestInfo } = this.props
-    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
+    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
     return (
       <div>
         <Header />
@@ -89,6 +93,7 @@ class LoanAgreementTerms extends Component {
               <th>Interest Rate On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number of Payments:</th>
+              <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Information:</th>
               <th>Submit Loan Terms Information:</th>
             </tr>
@@ -160,6 +165,11 @@ class LoanAgreementTerms extends Component {
                     </div>
                   </div>
                 </div>
+              </td>
+              <td>
+                <label>
+                  {this.state.Loanee_Pay_Pal_Data}
+                </label>
               </td>
               <td>
                 <label>
