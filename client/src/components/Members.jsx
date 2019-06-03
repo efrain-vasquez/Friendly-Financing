@@ -11,7 +11,15 @@ class Members extends Component {
   render () {
     const { MembersInfo } = this.props
     const IndividualMember = ({ First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference }) =>
-      (<tr><td>{`${First_Name}`}</td><td>{`${Last_Name}`}</td><td>{`${Email_Address}`}</td><td>{`${Current_Employer}`}</td><td>{`${Job_Title}`}</td><td>{`${Time_Employed_At_Current_Job}`}</td><td>{`${Reference}`}</td></tr>)
+      (<tr>
+        <td>{`${First_Name}`}</td>
+        <td>{`${Last_Name}`}</td>
+        <td>{`${Email_Address}`}</td>
+        <td>{`${Current_Employer}`}</td>
+        <td>{`${Job_Title}`}</td>
+        <td>{`${Time_Employed_At_Current_Job}`}</td>
+        <td>{`${Reference}`}</td>
+      </tr>)
     return (
       <div>
         <Header />

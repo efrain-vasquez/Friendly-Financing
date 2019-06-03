@@ -88,13 +88,13 @@ module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Re
   )
 }
 
-module.exports.getIDFromLoanRequestInfo = cb => {
-  connection.query('SELECT Loan_ID FROM LoanRequestInfo', (error, resultsIDFromLoanRequestInfo) => {
-    if (error) {
-      throw error
-    } else {
-      console.log('this is from mysql getIDFromLoanRequestInfo query', resultsIDFromLoanRequestInfo)
-      cb(resultsIDFromLoanRequestInfo)
-    }
-  })
-}
+// module.exports.getIDFromLoanRequestInfo = cb => {
+//   connection.query('SELECT Loan_ID FROM LoanRequestInfo', (error, resultsIDFromLoanRequestInfo) => {
+//     if (error) {
+//       throw error
+//     } else {
+//       console.log('this is from mysql getIDFromLoanRequestInfo query', resultsIDFromLoanRequestInfo)
+//       cb(resultsIDFromLoanRequestInfo)
+//     }
+//   })
+// }

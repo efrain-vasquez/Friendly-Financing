@@ -39,6 +39,12 @@ const Header = () => (
 
         <div className='navbar-item'>
           <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/PendingLoaneeApproval'><strong>Pending Loanee Approval</strong></Link></button>
+          </div>
+        </div>
+
+        <div className='navbar-item'>
+          <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'><Link to='/LoanAgreementTerms'><strong>Terms Of Loan</strong></Link></button>
           </div>
         </div>

@@ -24,7 +24,7 @@ app.get('/LoanRequestInfo', getThisLoanRequestData)
 app.post('/LoanRequestInfo', postThisLoanRequestData)
 app.get('/LoanTermsInfo', getThisLoanTermsData)
 app.post('/LoanTermsInfo', postThisLoanTermsData)
-app.get('/LoanTermsInfo', getTheIDFromLoanRequestInfo)
+// app.get('/LoanTermsInfo', getTheIDFromLoanRequestInfo)
 
 // react-router fallback so we can reload without visiting root
 app.get('/*', function (req, res) {
@@ -89,13 +89,13 @@ function postThisLoanTermsData (request, response) {
   })
 };
 
-function getTheIDFromLoanRequestInfo (request, response) {
-  db.getIDFromLoanRequestInfo(dataIDFromLoanRequestInfo => {
-    response
-      .status(200)
-      .send(dataIDFromLoanRequestInfo)
-      .end()
-  })
-};
+// function getTheIDFromLoanRequestInfo (request, response) {
+//   db.getIDFromLoanRequestInfo(dataIDFromLoanRequestInfo => {
+//     response
+//       .status(200)
+//       .send(dataIDFromLoanRequestInfo)
+//       .end()
+//   })
+// };
 
 module.exports = app

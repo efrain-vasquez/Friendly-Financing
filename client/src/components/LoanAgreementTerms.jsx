@@ -21,7 +21,9 @@ class LoanAgreementTerms extends Component {
   }
 
   componentDidMount () {
-    // this.getMemberLoanID('/LoanTermsInfo')
+    this.setState({
+      MemberLoan_ID: this.props.currentID
+    })
   }
 
   // getMemberLoanID (url = '') {
@@ -68,9 +70,6 @@ class LoanAgreementTerms extends Component {
   render () {
     const { LoanTermsInfo, LoanRequestInfo } = this.props
     const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info } = this.state
-    const IndividualLoan_IDRequest = ({ Loan_ID }) => (`${Loan_ID}`)
-    console.log('test')
-    console.log(LoanRequestInfo)
     return (
       <div>
         <Header />
@@ -98,8 +97,7 @@ class LoanAgreementTerms extends Component {
             <tr>
               <td>
                 <label>
-                  {LoanRequestInfo.map(listItem => (
-                    <IndividualLoan_IDRequest Loan_ID={listItem.Loan_ID} />))}
+                  {this.state.MemberLoan_ID}
                 </label>
               </td>
               <td>
@@ -133,7 +131,7 @@ class LoanAgreementTerms extends Component {
                         <option value='Weekly'>Weekly</option>
                         <option value='Bi-Weekly'>Bi-Weekly</option>
                         <option value='Monthly'>Monthly</option>
-                        <option value='One_Lump_Sum'>One Lump Sum</option>
+                        <option value='One Lump Sum'>One Lump Sum</option>
                       </select>
                     </div>
                   </div>
@@ -181,7 +179,6 @@ class LoanAgreementTerms extends Component {
             </tr>
           </tbody>
         </table>
-        <PendingLoaneeApproval />
       </div>
     )
   }
