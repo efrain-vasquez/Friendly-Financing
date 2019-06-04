@@ -6,10 +6,15 @@ import { Link } from 'react-router-dom'
 class PendingLoaneeApproval extends Component {
   constructor (props) {
     super(props)
+    this.handleSubmitWillingToAcceptTermsButton = this.handleSubmitWillingToAcceptTermsButton.bind(this)
+  }
+
+  handleSubmitWillingToAcceptTermsButton (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) {
+    this.props.createAcceptedLoanTermsEntry(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info)
   }
 
   render () {
-    const { LoanTermsInfo } = this.props
+    const { LoanTermsInfo, createAcceptedLoanTermsEntry } = this.props
     const IndividualLoanRequest =
     ({ MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
       (<tr>
@@ -22,8 +27,8 @@ class PendingLoaneeApproval extends Component {
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={() => { this.handleSubmitWillingToAccepTermsButton(MemberLoan_ID, Loanee_Pay_Pal_Data) }}>
-              <Link to='/GiveRating'>Willing To Accept Terms</Link>
+              onClick={() => { this.handleSubmitWillingToAcceptTermsButton(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) }}>
+              <Link to='/LoansCreated'>Willing To Accept Terms</Link>
             </button>
           </div>
         </td>

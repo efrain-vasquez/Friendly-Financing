@@ -61,7 +61,7 @@ class BecomeAMember extends Component {
         <Header />
         <section className='hero is-small is-primary is-bold is-center'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <h1 className='title'>
         Become A Member
               </h1>
@@ -80,7 +80,7 @@ class BecomeAMember extends Component {
             name='First_Name'
             value={First_Name}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -91,7 +91,7 @@ class BecomeAMember extends Component {
             name='Last_Name'
             value={Last_Name}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -102,7 +102,7 @@ class BecomeAMember extends Component {
             name='Email_Address'
             value={Email_Address}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -113,7 +113,7 @@ class BecomeAMember extends Component {
             name='Current_Employer'
             value={Current_Employer}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -124,7 +124,7 @@ class BecomeAMember extends Component {
             name='Job_Title'
             value={Job_Title}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -135,7 +135,7 @@ class BecomeAMember extends Component {
             name='Time_Employed_At_Current_Job'
             value={Time_Employed_At_Current_Job}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -146,7 +146,7 @@ class BecomeAMember extends Component {
             name='Reference'
             value={Reference}
             onChange={this.handleInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 

@@ -15,7 +15,6 @@ class LoanAgreementTerms extends Component {
       Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     }
-
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
     this.handleLoanTermsSubmit = this.handleLoanTermsSubmit.bind(this)
     // this.getMemberLoanID = this.getMemberLoanID.bind(this)
@@ -50,6 +49,7 @@ class LoanAgreementTerms extends Component {
 
   handleLoanTermsSubmit (e) {
     e.preventDefault()
+
     const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, Submit_Info } = this.state
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
       MemberLoan_ID,
@@ -70,7 +70,6 @@ class LoanAgreementTerms extends Component {
     })
   }
 
-  // console.log(this.props.LoanRequestInfo[0])
   render () {
     const { LoanTermsInfo, LoanRequestInfo } = this.props
     const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
@@ -183,7 +182,10 @@ class LoanAgreementTerms extends Component {
               </td>
               <td>
                 <div className='button is-primary is-outlined is-small'>
-                  <button className='button is-text is-bold is-outlined is-normal' onClick={this.handleLoanTermsSubmit}><strong>SUBMIT</strong></button>
+                  <button className='button is-text is-bold is-outlined is-normal'
+                    onClick={this.handleLoanTermsSubmit}>
+                    <strong>SUBMIT</strong>
+                  </button>
                 </div>
               </td>
             </tr>

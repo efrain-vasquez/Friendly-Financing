@@ -7,7 +7,7 @@ import BecomeAMember from './components/BecomeAMember.jsx'
 import Members from './components/Members.jsx'
 import RequestALoan from './components/RequestALoan.jsx'
 import RequestedLoans from './components/RequestedLoans.jsx'
-import GiveRating from './components/GiveRating.jsx'
+import LoansCreated from './components/LoansCreated.jsx'
 import LoanAgreementTerms from './components/LoanAgreementTerms.jsx'
 import PendingLoaneeApproval from './components/PendingLoaneeApproval.jsx'
 
@@ -17,6 +17,12 @@ class App extends Component {
     this.state = {
       currentID: '',
       currentLoanee_Pay_Pal_Info: '',
+      currentMemberLoan_ID: '',
+      currentInterest_On_Loan: '',
+      currentRepayment_Schedule: '',
+      currentNumber_Of_Payments: '',
+      currentLoanee_Pay_Pal_Data: '',
+      currentLenders_Pay_Pal_Info: '',
       MembersInfo: [],
       LoanRequestInfo: [],
       LoanTermsInfo: []
@@ -28,6 +34,7 @@ class App extends Component {
     this.getMembersLoanRequestData = this.getMembersLoanRequestData.bind(this)
     this.postMembersLoanTermsData = this.postMembersLoanTermsData.bind(this)
     this.updateLoanAgreementTerms = this.updateLoanAgreementTerms.bind(this)
+    this.createAcceptedLoanTermsEntry = this.createAcceptedLoanTermsEntry.bind(this)
   }
 
   componentDidMount () {
@@ -36,7 +43,7 @@ class App extends Component {
     this.getMembersLoanTermsData('/LoanTermsInfo')
   }
 
-  getData (url = '') {
+  getData (url = '/MembersInfo') {
     return fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -47,7 +54,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  postData (url = '', data = {}) {
+  postData (url = '/MembersInfo', data = {}) {
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -60,7 +67,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  getMembersLoanRequestData (url = '') {
+  getMembersLoanRequestData (url = '/LoanRequestInfo') {
     return fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -71,7 +78,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  postMembersLoanRequestData (url = '', data = {}) {
+  postMembersLoanRequestData (url = '/LoanRequestInfo', data = {}) {
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -84,7 +91,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  getMembersLoanTermsData (url = '') {
+  getMembersLoanTermsData (url = '/LoanTermsInfo') {
     return fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -95,7 +102,7 @@ class App extends Component {
       .catch(err => console.error(err))
   }
 
-  postMembersLoanTermsData (url = '', data = {}) {
+  postMembersLoanTermsData (url = '/LoanTermsInfo', data = {}) {
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -118,8 +125,19 @@ class App extends Component {
     })
   }
 
+  createAcceptedLoanTermsEntry (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) {
+    this.setState({
+      currentMemberLoan_ID: MemberLoan_ID,
+      currentInterest_On_Loan: Interest_On_Loan,
+      currentRepayment_Schedule: Repayment_Schedule,
+      currentNumber_Of_Payments: Number_Of_Payments,
+      currentLoanee_Pay_Pal_Data: Loanee_Pay_Pal_Data,
+      currentLenders_Pay_Pal_Info: Lenders_Pay_Pal_Info
+    })
+  }
+
   render () {
-    const { currentID, currentLoanee_Pay_Pal_Info, MembersInfo, LoanRequestInfo, LoanTermsInfo } = this.state
+    const { currentID, currentLoanee_Pay_Pal_Info, currentMemberLoan_ID, currentInterest_On_Loan, currentRepayment_Schedule, currentNumber_Of_Payments, currentLoanee_Pay_Pal_Data, currentLenders_Pay_Pal_Info, MembersInfo, LoanRequestInfo, LoanTermsInfo } = this.state
     return (
       <BrowserRouter>
         <div>
@@ -144,6 +162,7 @@ class App extends Component {
                 getMembersLoanRequestData={this.getMembersLoanRequestData} />} />
             <Route exact path='/PendingLoaneeApproval' render={(props) =>
               <PendingLoaneeApproval {...props}
+                createAcceptedLoanTermsEntry={this.createAcceptedLoanTermsEntry}
                 LoanTermsInfo={LoanTermsInfo}
                 getMembersLoanTermsData={this.getMembersLoanTermsData} />} />
             <Route exact path='/LoanAgreementTerms' render={(props) =>
@@ -153,7 +172,15 @@ class App extends Component {
                 LoanTermsInfo={LoanTermsInfo}
                 LoanRequestInfo={LoanRequestInfo}
                 postMembersLoanTermsData={this.postMembersLoanTermsData} />} />
-            <Route exact path='/GiveRating' component={GiveRating} />
+            <Route exact path='/LoansCreated' render={(props) =>
+              <LoansCreated {...props}
+                LoanTermsInfo={LoanTermsInfo}
+                currentMemberLoan_ID={currentMemberLoan_ID}
+                currentInterest_On_Loan={currentInterest_On_Loan}
+                currentRepayment_Schedule={currentRepayment_Schedule}
+                currentNumber_Of_Payments={currentNumber_Of_Payments}
+                currentLoanee_Pay_Pal_Data={currentLoanee_Pay_Pal_Data}
+                currentLenders_Pay_Pal_Info={currentLenders_Pay_Pal_Info} />} />
           </Switch>
         </div>
       </BrowserRouter>

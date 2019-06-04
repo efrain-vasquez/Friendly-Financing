@@ -12,13 +12,15 @@ CREATE DATABASE Members;
 USE Members;
 
 CREATE TABLE IF NOT EXISTS MembersInfo (
+  ID INT NOT NULL AUTO_INCREMENT,
   First_Name VARCHAR(50) NOT NULL,
   Last_Name VARCHAR(50) NOT NULL,
   Email_Address VARCHAR(50) NOT NULL,
   Current_Employer VARCHAR(50) NOT NULL,
   Job_Title VARCHAR(50) NOT NULL,
   Time_Employed_At_Current_Job VARCHAR(50) NOT NULL,
-  Reference VARCHAR(50) NOT NULL
+  Reference VARCHAR(50) NOT NULL,
+  Primary KEY (ID)
   ); 
 
  INSERT INTO MembersInfo (First_Name, Last_Name, Email_Address, Current_Employer, Job_Title, Time_Employed_At_Current_Job, Reference) 

@@ -73,7 +73,7 @@ class RequestALoan extends Component {
             name='First_Name'
             value={First_Name}
             onChange={this.handleLoanRequestInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -84,7 +84,7 @@ class RequestALoan extends Component {
             name='Last_Name'
             value={Last_Name}
             onChange={this.handleLoanRequestInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -95,7 +95,7 @@ class RequestALoan extends Component {
             name='Amount_Requesting'
             value={Amount_Requesting}
             onChange={this.handleLoanRequestInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -106,7 +106,7 @@ class RequestALoan extends Component {
             name='Reason_For_Request'
             value={Reason_For_Request}
             onChange={this.handleLoanRequestInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -117,7 +117,7 @@ class RequestALoan extends Component {
             name='Loanee_Pay_Pal_Info'
             value={Loanee_Pay_Pal_Info}
             onChange={this.handleLoanRequestInput}
-            autocomplete='off'
+            autoComplete='off'
           />
         </label>
 
@@ -139,6 +139,6 @@ export default RequestALoan
 //     name='Willing_To_Finance_Loan'
 //     value={Willing_To_Finance_Loan}
 //     onChange={this.handleLoanRequestInput}
-//     autocomplete='off'
+//     autoComplete='off'
 //   />
 // </label>
