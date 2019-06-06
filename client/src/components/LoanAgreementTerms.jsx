@@ -3,40 +3,32 @@ import Header from './Header.jsx'
 import App from '../App.jsx'
 import RequestALoan from './RequestALoan.jsx'
 import PendingLoaneeApproval from './PendingLoaneeApproval.jsx'
+import { Link } from 'react-router-dom'
 
 class LoanAgreementTerms extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      MemberLoan_ID: '',
+      Loanee_Loan_ID: '',
+      Loan_Amount: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
+      Amount_Per_Payment: '',
       Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     }
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
     this.handleLoanTermsSubmit = this.handleLoanTermsSubmit.bind(this)
-    // this.getMemberLoanID = this.getMemberLoanID.bind(this)
   }
 
   componentDidMount () {
     this.setState({
-      MemberLoan_ID: this.props.currentID,
-      Loanee_Pay_Pal_Data: this.props.currentLoanee_Pay_Pal_Info
+      Loanee_Loan_ID: this.props.currentID,
+      Loanee_Pay_Pal_Data: this.props.currentLoanee_Pay_Pal_Info,
+      Loan_Amount: this.props.currentAmount_Requesting
     })
   }
-
-  // getMemberLoanID (url = '') {
-  //   return fetch(url)
-  //     .then(response => response.json())
-  //     .then(dataIDFromLoanRequestInfo => {
-  //       this.setState({
-  //         Loan_ID: dataIDFromLoanRequestInfo[0].Loan_ID
-  //       })
-  //     })
-  //     .catch(err => console.error(err))
-  // }
 
   handleLoanTermsInput (e) {
     const { target } = e
@@ -49,30 +41,41 @@ class LoanAgreementTerms extends Component {
 
   handleLoanTermsSubmit (e) {
     e.preventDefault()
+    const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
 
-    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, Submit_Info } = this.state
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
-      MemberLoan_ID,
+      Loanee_Loan_ID,
+      Loan_Amount,
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
+      Amount_Per_Payment,
       Loanee_Pay_Pal_Data,
       Lenders_Pay_Pal_Info
     })
 
     this.setState({
-      MemberLoan_ID: '',
+      Loanee_Loan_ID: '',
+      Loan_Amount: '',
       Interest_On_Loan: '',
       Repayment_Schedule: '',
       Number_Of_Payments: '',
+      Amount_Per_Payment: '',
       Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     })
   }
 
+  calculateAmoutPerPayment (Loan_Amount, Interest_On_Loan, Number_Of_Payments) {
+  //   const { Amount_Per_Payment } = this.state
+  //    this.setState({
+  //     Amount_Per_Payment : parseFloat((Loan_Amount * (Interest_On_Loan / 100)) * Number_Of_Payments)
+  // })
+  }
+
   render () {
-    const { LoanTermsInfo, LoanRequestInfo } = this.props
-    const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
+    const { LoanTermsInfo, LoanRequestInfo, postMembersLoanTermsData } = this.props
+    const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
     return (
       <div>
         <Header />
@@ -89,9 +92,11 @@ class LoanAgreementTerms extends Component {
           <thead>
             <tr>
               <th>ID Of Loan To Be Financed:</th>
+              <th>Principal Loan Amount:</th>
               <th>Interest Rate On Loan:</th>
               <th>Repayment Schedule:</th>
-              <th>Number of Payments:</th>
+              <th>Numbers of Payments:</th>
+              <th>Amount Per Payment:</th>
               <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Information:</th>
               <th>Submit Loan Terms Information:</th>
@@ -101,7 +106,12 @@ class LoanAgreementTerms extends Component {
             <tr>
               <td>
                 <label>
-                  {this.state.MemberLoan_ID}
+                  {this.state.Loanee_Loan_ID}
+                </label>
+              </td>
+              <td>
+                <label>
+                  {this.state.Loan_Amount}
                 </label>
               </td>
               <td>
@@ -113,11 +123,11 @@ class LoanAgreementTerms extends Component {
                         value={Interest_On_Loan}
                         onChange={this.handleLoanTermsInput}
                         placeholder='Hovered input'>
-                        <option value='5 Percent'>5 Percent</option>
-                        <option value='10 Percent'>10 Percent</option>
-                        <option value='15 Percent'>15 Percent</option>
-                        <option value='20 Percent'>20 Percent</option>
-                        <option value='25 Percent'>25 Percent</option>
+                        <option value={5} >5 Percent</option>
+                        <option value={10} >10 Percent</option>
+                        <option value={15} >15 Percent</option>
+                        <option value={20} >20 Percent</option>
+                        <option value={25} >25 Percent</option>
                       </select>
                     </div>
                   </div>
@@ -150,20 +160,25 @@ class LoanAgreementTerms extends Component {
                         value={Number_Of_Payments}
                         onChange={this.handleLoanTermsInput}
                         placeholder='Hovered input'>
-                        <option value='1 Payment'>1 Payment</option>
-                        <option value='2 Payments'>2 Payments</option>
-                        <option value='3 Payments'>3 Payments</option>
-                        <option value='4 Payments'>4 Payments</option>
-                        <option value='5 Payments'>5 Payments</option>
-                        <option value='6 Payments'>6 Payments</option>
-                        <option value='7 Payments'>7 Payments</option>
-                        <option value='8 Payments'>8 Payments</option>
-                        <option value='9 Payments'>9 Payments</option>
-                        <option value='10 Payments'>10 Payments</option>
+                        <option value={1} >1 Payment</option>
+                        <option value={2} >2 Payments</option>
+                        <option value={3} >3 Payments</option>
+                        <option value={4} >4 Payments</option>
+                        <option value={5} >5 Payments</option>
+                        <option value={6} >6 Payments</option>
+                        <option value={7} >7 Payments</option>
+                        <option value={8} >8 Payments</option>
+                        <option value={9} >9 Payments</option>
+                        <option value={10} >10 Payments</option>
                       </select>
                     </div>
                   </div>
                 </div>
+              </td>
+              <td>
+                <label>
+                  {this.state.Amount_Per_Payment}
+                </label>
               </td>
               <td>
                 <label>
@@ -184,7 +199,9 @@ class LoanAgreementTerms extends Component {
                 <div className='button is-primary is-outlined is-small'>
                   <button className='button is-text is-bold is-outlined is-normal'
                     onClick={this.handleLoanTermsSubmit}>
-                    <strong>SUBMIT</strong>
+                    <Link to='/PendingLoaneeApproval'>
+                      <strong>SUBMIT</strong>
+                    </Link>
                   </button>
                 </div>
               </td>
@@ -197,3 +214,5 @@ class LoanAgreementTerms extends Component {
 }
 
 export default LoanAgreementTerms
+
+// Loan_Amount(Interest_On_Loan(1+Interest_On_Loan)^Number_Of_Payments)/(1+Interest_On_Loan)^Number_Of_Payments-1);

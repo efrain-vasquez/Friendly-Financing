@@ -74,10 +74,10 @@ module.exports.getLoanTermsData = cb => {
   })
 }
 
-module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, cb) {
+module.exports.postLoanTermsData = function (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO LoanTermsInfo (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?);',
-    [MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info],
+    'INSERT INTO LoanTermsInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+    [Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)
@@ -88,13 +88,26 @@ module.exports.postLoanTermsData = function (MemberLoan_ID, Interest_On_Loan, Re
   )
 }
 
-// module.exports.getIDFromLoanRequestInfo = cb => {
-//   connection.query('SELECT Loan_ID FROM LoanRequestInfo', (error, resultsIDFromLoanRequestInfo) => {
-//     if (error) {
-//       throw error
-//     } else {
-//       console.log('this is from mysql getIDFromLoanRequestInfo query', resultsIDFromLoanRequestInfo)
-//       cb(resultsIDFromLoanRequestInfo)
-//     }
-//   })
-// }
+module.exports.getCreatedLoanTermsData = cb => {
+  connection.query('SELECT * from CreatedLoansInfo', (error, results) => {
+    if (error) {
+      throw error
+    } else {
+      cb(results)
+    }
+  })
+}
+
+module.exports.postCreatedLoanTermsData = function (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, cb) {
+  connection.query(
+    'INSERT INTO CreatedLoansInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+    [Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info],
+    (error, results) => {
+      if (error) {
+        cb(error)
+      } else {
+        cb(results)
+      }
+    }
+  )
+}

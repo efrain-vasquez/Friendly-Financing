@@ -40,21 +40,39 @@ CREATE TABLE IF NOT EXISTS LoanRequestInfo (
   PRIMARY KEY (Loan_ID)
   );
 
-
 INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
                VALUES (Loan_ID, "Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "My Pay Pal Info");
 
 INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
                VALUES (Loan_ID, "Alex", "Gonzalez", "8000 Pesos", "To Purchase A Laptop", "My Pay Pal Info");
 
-
-
 CREATE TABLE IF NOT EXISTS LoanTermsInfo (
   ID INT NOT NULL AUTO_INCREMENT,
-  MemberLoan_ID INT NOT NULL,
+  Loanee_Loan_ID INT NOT NULL,
+  Loan_Amount VARCHAR(50) NOT NULL,
   Interest_On_Loan VARCHAR(50) NOT NULL,
   Repayment_Schedule VARCHAR(50) NOT NULL,
   Number_Of_Payments VARCHAR(50) NOT NULL,
+  Amount_Per_Payment VARCHAR(10) NOT NULL,
+  Loanee_Pay_Pal_Data VARCHAR(50) NOT NULL,
+  Lenders_Pay_Pal_Info VARCHAR(99) NOT NULL,
+  Primary KEY (ID)
+  );
+
+
+INSERT INTO LoanTermsInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) 
+                VALUES (Loanee_Loan_ID, "8000", "10", "Weekly", "7", "1000", "My pay pal info", "Your Pay Pal Info");
+
+
+
+CREATE TABLE IF NOT EXISTS CreatedLoansInfo (
+  ID INT NOT NULL AUTO_INCREMENT,
+  Loanee_Loan_ID INT NOT NULL,
+  Loan_Amount VARCHAR(50) NOT NULL,
+  Interest_On_Loan INT(3) NOT NULL,
+  Repayment_Schedule VARCHAR(50) NOT NULL,
+  Number_Of_Payments INT(10) NOT NULL,
+  Amount_Per_Payment INT(10) NOT NULL,
   Loanee_Pay_Pal_Data VARCHAR(50) NOT NULL,
   Lenders_Pay_Pal_Info VARCHAR(99) NOT NULL,
   Primary KEY (ID)
@@ -62,6 +80,8 @@ CREATE TABLE IF NOT EXISTS LoanTermsInfo (
 
 
 
+-- INSERT INTO LoanTermsInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) 
+--                VALUES (Loanee_Loan_ID, 8000, 10, "Weekly", 7, 1000, "My pay pal info", "Your Pay Pal Info");
 
 /*
 //INSERT INTO LoanTermsInfo (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Lenders_Pay_Pal_Info) 

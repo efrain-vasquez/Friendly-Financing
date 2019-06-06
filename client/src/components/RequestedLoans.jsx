@@ -10,12 +10,12 @@ class RequestedLoans extends Component {
     this.handleSubmitWillingToFinanceButton = this.handleSubmitWillingToFinanceButton.bind(this)
   }
 
-  handleSubmitWillingToFinanceButton (Loan_ID, Loanee_Pay_Pal_Info) {
-    this.props.updateLoanAgreementTerms(Loan_ID, Loanee_Pay_Pal_Info)
+  handleSubmitWillingToFinanceButton (Loan_ID, Loanee_Pay_Pal_Info, Amount_Requesting) {
+    this.props.updateLoanAgreementTerms(Loan_ID, Loanee_Pay_Pal_Info, Amount_Requesting)
   }
 
   render () {
-    const { LoanRequestInfo, updateLoanAgreementTerms } = this.props
+    const { LoanRequestInfo, LoanTermsInfo, updateLoanAgreementTerms, getMembersLoanRequestData, postMembersLoanTermsData } = this.props
     const IndividualRequest =
     ({ Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info }) =>
       (<tr>
@@ -28,7 +28,7 @@ class RequestedLoans extends Component {
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={() => { this.handleSubmitWillingToFinanceButton(Loan_ID, Loanee_Pay_Pal_Info) }}>
+              onClick={() => { this.handleSubmitWillingToFinanceButton(Loan_ID, Loanee_Pay_Pal_Info, Amount_Requesting) }}>
               <Link to='/LoanAgreementTerms'>Willing To Lend</Link>
             </button>
           </div>

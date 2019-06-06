@@ -91,7 +91,7 @@ class RequestALoan extends Component {
         <label className='label'>
           <strong>Amount Requesting:</strong>{' '}
           <input
-            type='text'
+            type='int'
             name='Amount_Requesting'
             value={Amount_Requesting}
             onChange={this.handleLoanRequestInput}
@@ -123,7 +123,9 @@ class RequestALoan extends Component {
 
         <br />
         <div className='button is-primary is-outlined is-small'>
-          <button className='button is-text is-outlined is-normal' onClick={this.handleLoanRequestSubmit}><strong>SUBMIT</strong></button>
+          <button className='button is-text is-outlined is-normal'
+            onClick={this.handleLoanRequestSubmit}>
+            <strong>SUBMIT</strong></button>
         </div>
       </div>
     )
@@ -131,14 +133,3 @@ class RequestALoan extends Component {
 }
 
 export default RequestALoan
-
-// <label className='label'>
-//   <strong>Willing To Finance Loan:</strong>{' '}
-//   <input
-//     type='text'
-//     name='Willing_To_Finance_Loan'
-//     value={Willing_To_Finance_Loan}
-//     onChange={this.handleLoanRequestInput}
-//     autoComplete='off'
-//   />
-// </label>

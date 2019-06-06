@@ -9,26 +9,27 @@ class PendingLoaneeApproval extends Component {
     this.handleSubmitWillingToAcceptTermsButton = this.handleSubmitWillingToAcceptTermsButton.bind(this)
   }
 
-  handleSubmitWillingToAcceptTermsButton (MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) {
-    this.props.createAcceptedLoanTermsEntry(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info)
+  handleSubmitWillingToAcceptTermsButton () {
   }
 
   render () {
-    const { LoanTermsInfo, createAcceptedLoanTermsEntry } = this.props
+    const { LoanTermsInfo, CreatedLoansInfo, getMembersLoanTermsData } = this.props
     const IndividualLoanRequest =
-    ({ MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
+    ({ Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
       (<tr>
-        <td>{`${MemberLoan_ID}`}</td>
+        <td>{`${Loanee_Loan_ID}`}</td>
+        <td>{`${Loan_Amount}`}</td>
         <td>{`${Interest_On_Loan}`}</td>
         <td>{`${Repayment_Schedule}`}</td>
         <td>{`${Number_Of_Payments}`}</td>
+        <td>{`${Amount_Per_Payment}`}</td>
         <td>{`${Loanee_Pay_Pal_Data}`}</td>
         <td>{`${Lenders_Pay_Pal_Info}`}</td>
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={() => { this.handleSubmitWillingToAcceptTermsButton(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) }}>
-              <Link to='/LoansCreated'>Willing To Accept Terms</Link>
+              onClick={() => { this.handleSubmitWillingToAcceptTermsButton() }}>
+              Willing To Accept Terms
             </button>
           </div>
         </td>
@@ -46,10 +47,12 @@ class PendingLoaneeApproval extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-              <th>MemberLoan ID:</th>
+              <th>Loanee Loan ID:</th>
+              <th>Loan Amount:</th>
               <th>Interest On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Number Of Payments:</th>
+              <th>Amount Per Payment:</th>
               <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Info:</th>
               <th>Willing To Accept Terms:</th>
@@ -58,10 +61,12 @@ class PendingLoaneeApproval extends Component {
           <tbody>
             {LoanTermsInfo.map(listItem => (
               <IndividualLoanRequest
-                MemberLoan_ID={listItem.MemberLoan_ID}
+                Loanee_Loan_ID={listItem.Loanee_Loan_ID}
+                Loan_Amount={listItem.Loan_Amount}
                 Interest_On_Loan={listItem.Interest_On_Loan}
                 Repayment_Schedule={listItem.Repayment_Schedule}
                 Number_Of_Payments={listItem.Number_Of_Payments}
+                Amount_Per_Payment={listItem.Amount_Per_Payment}
                 Loanee_Pay_Pal_Data={listItem.Loanee_Pay_Pal_Data}
                 Lenders_Pay_Pal_Info={listItem.Lenders_Pay_Pal_Info}
               />

@@ -24,6 +24,8 @@ app.get('/LoanRequestInfo', getThisLoanRequestData)
 app.post('/LoanRequestInfo', postThisLoanRequestData)
 app.get('/LoanTermsInfo', getThisLoanTermsData)
 app.post('/LoanTermsInfo', postThisLoanTermsData)
+app.get('/CreatedLoansInfo', getThisCreatedLoansData)
+app.post('/CreatedLoansInfo', postThisCreatedLoansData)
 // app.get('/LoanTermsInfo', getTheIDFromLoanRequestInfo)
 
 // react-router fallback so we can reload without visiting root
@@ -80,8 +82,9 @@ function getThisLoanTermsData (request, response) {
 };
 
 function postThisLoanTermsData (request, response) {
-  const { MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = request.body
-  db.postLoanTermsData(MemberLoan_ID, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, (res) => {
+  const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = request.body
+  console.log(Repayment_Schedule)
+  db.postLoanTermsData(Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, (res) => {
     response
       .status(200)
       .send(res)
@@ -89,13 +92,22 @@ function postThisLoanTermsData (request, response) {
   })
 };
 
-// function getTheIDFromLoanRequestInfo (request, response) {
-//   db.getIDFromLoanRequestInfo(dataIDFromLoanRequestInfo => {
-//     response
-//       .status(200)
-//       .send(dataIDFromLoanRequestInfo)
-//       .end()
-//   })
-// };
+function getThisCreatedLoansData (request, response) {
+  db.getCreatedLoanTermsData(data => {
+    response
+      .status(200)
+      .send(data)
+  })
+};
+
+function postThisCreatedLoansData (request, response) {
+  const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = request.body
+  db.postCreatedLoanTermsData(Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, (res) => {
+    response
+      .status(200)
+      .send(res)
+      .end()
+  })
+};
 
 module.exports = app

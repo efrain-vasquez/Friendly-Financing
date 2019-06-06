@@ -152,7 +152,9 @@ class BecomeAMember extends Component {
 
         <br />
         <div className='button is-primary is-outlined is-small'>
-          <button className='button is-text is-outlined is-normal' onClick={this.handleSubmit}><strong>SUBMIT</strong></button>
+          <button className='button is-text is-outlined is-normal'
+            onClick={this.handleSubmit}>
+            <strong>SUBMIT</strong></button>
         </div>
       </div>
     )

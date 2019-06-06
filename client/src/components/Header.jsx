@@ -13,7 +13,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/'>
-                <strong>Home</strong>
+                Home
               </Link>
             </button>
           </div>
@@ -23,7 +23,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/BecomeAMember'>
-                <strong>Become A Member</strong>
+                Become A Member
               </Link>
             </button>
           </div>
@@ -33,7 +33,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/Members'>
-                <strong>Members</strong>
+                Members
               </Link>
             </button>
           </div>
@@ -43,7 +43,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/RequestALoan'>
-                <strong>Request A Loan</strong>
+                Request A Loan
               </Link>
             </button>
           </div>
@@ -53,7 +53,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/RequestedLoans'>
-                <strong>Requested Loans</strong>
+                Requested Loans
               </Link>
             </button>
           </div>
@@ -63,17 +63,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/PendingLoaneeApproval'>
-                <strong>Pending Loanee Approval</strong>
-              </Link>
-            </button>
-          </div>
-        </div>
-
-        <div className='navbar-item'>
-          <div className='button is-primary is-outlined is-small'>
-            <button className='button is-text is-light is-bold is-outlined is-normal'>
-              <Link to='/LoanAgreementTerms'>
-                <strong>Terms Of Loan</strong>
+                Pending Loanee Approval
               </Link>
             </button>
           </div>
@@ -83,7 +73,17 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/LoansCreated'>
-                <strong>Created Loans</strong>
+                Created Loans
+              </Link>
+            </button>
+          </div>
+        </div>
+
+        <div className='navbar-item'>
+          <div className='button is-primary is-outlined is-small'>
+            <button className='button is-text is-light is-bold is-outlined is-normal'>
+              <Link to='/LoanAgreementTerms'>
+                Terms Of Loan
               </Link>
             </button>
           </div>
