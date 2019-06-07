@@ -20,6 +20,7 @@ class LoanAgreementTerms extends Component {
     }
     this.handleLoanTermsInput = this.handleLoanTermsInput.bind(this)
     this.handleLoanTermsSubmit = this.handleLoanTermsSubmit.bind(this)
+    this.calculateAmountPerPayment = this.calculateAmountPerPayment.bind(this)
   }
 
   componentDidMount () {
@@ -39,9 +40,16 @@ class LoanAgreementTerms extends Component {
     })
   }
 
+  calculateAmountPerPayment (Loan_Amount, Interest_On_Loan, Number_Of_Payments) {
+    const result = parseFloat((Loan_Amount * (Interest_On_Loan / 100)) / Number_Of_Payments)
+    return result
+  }
+
   handleLoanTermsSubmit (e) {
     e.preventDefault()
     const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
+
+    var currentAmountPerPayment = this.calculateAmountPerPayment(Loan_Amount, Interest_On_Loan, Number_Of_Payments)
 
     this.props.postMembersLoanTermsData('/LoanTermsInfo', {
       Loanee_Loan_ID,
@@ -49,7 +57,7 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
-      Amount_Per_Payment,
+      Amount_Per_Payment: Amount_Per_Payment + currentAmountPerPayment,
       Loanee_Pay_Pal_Data,
       Lenders_Pay_Pal_Info
     })
@@ -64,13 +72,6 @@ class LoanAgreementTerms extends Component {
       Loanee_Pay_Pal_Data: '',
       Lenders_Pay_Pal_Info: ''
     })
-  }
-
-  calculateAmoutPerPayment (Loan_Amount, Interest_On_Loan, Number_Of_Payments) {
-  //   const { Amount_Per_Payment } = this.state
-  //    this.setState({
-  //     Amount_Per_Payment : parseFloat((Loan_Amount * (Interest_On_Loan / 100)) * Number_Of_Payments)
-  // })
   }
 
   render () {
@@ -119,6 +120,7 @@ class LoanAgreementTerms extends Component {
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
+                        type='Number'
                         name='Interest_On_Loan'
                         value={Interest_On_Loan}
                         onChange={this.handleLoanTermsInput}
@@ -138,6 +140,7 @@ class LoanAgreementTerms extends Component {
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
+                        type='number'
                         name='Repayment_Schedule'
                         value={Repayment_Schedule}
                         onChange={this.handleLoanTermsInput}
@@ -156,6 +159,7 @@ class LoanAgreementTerms extends Component {
                   <div className='control'>
                     <div className='select is-primary'>
                       <select
+                        type='number'
                         name='Number_Of_Payments'
                         value={Number_Of_Payments}
                         onChange={this.handleLoanTermsInput}
@@ -199,9 +203,8 @@ class LoanAgreementTerms extends Component {
                 <div className='button is-primary is-outlined is-small'>
                   <button className='button is-text is-bold is-outlined is-normal'
                     onClick={this.handleLoanTermsSubmit}>
-                    <Link to='/PendingLoaneeApproval'>
-                      <strong>SUBMIT</strong>
-                    </Link>
+
+                    <strong>SUBMIT</strong>
                   </button>
                 </div>
               </td>

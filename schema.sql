@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS LoanRequestInfo (
   );
 
 INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
-               VALUES (Loan_ID, "Efrain", "Vasquez Arias", "1000 Pesos", "no comment", "My Pay Pal Info");
+               VALUES (Loan_ID, "Efrain", "Vasquez Arias", "1000", "no comment", "My Pay Pal Info");
 
 INSERT INTO LoanRequestInfo (Loan_ID, First_Name, Last_Name, Amount_Requesting, Reason_For_Request, Loanee_Pay_Pal_Info) 
-               VALUES (Loan_ID, "Alex", "Gonzalez", "8000 Pesos", "To Purchase A Laptop", "My Pay Pal Info");
+               VALUES (Loan_ID, "Alex", "Gonzalez", "8000", "To Purchase A Laptop", "My Pay Pal Info");
 
 CREATE TABLE IF NOT EXISTS LoanTermsInfo (
   ID INT NOT NULL AUTO_INCREMENT,

@@ -91,7 +91,7 @@ class RequestALoan extends Component {
         <label className='label'>
           <strong>Amount Requesting:</strong>{' '}
           <input
-            type='int'
+            type='number'
             name='Amount_Requesting'
             value={Amount_Requesting}
             onChange={this.handleLoanRequestInput}
