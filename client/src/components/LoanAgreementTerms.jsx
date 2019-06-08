@@ -57,7 +57,7 @@ class LoanAgreementTerms extends Component {
       Interest_On_Loan,
       Repayment_Schedule,
       Number_Of_Payments,
-      Amount_Per_Payment: Amount_Per_Payment + currentAmountPerPayment,
+      Amount_Per_Payment: currentAmountPerPayment,
       Loanee_Pay_Pal_Data,
       Lenders_Pay_Pal_Info
     })
@@ -80,9 +80,9 @@ class LoanAgreementTerms extends Component {
     return (
       <div>
         <Header />
-        <section className='hero is-small is-primary is-bold'>
+        <section className='hero is-small is-primary is-bold is-center'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <h1 className='title'>
         Terms Of Loan From Lender
               </h1>
@@ -97,7 +97,6 @@ class LoanAgreementTerms extends Component {
               <th>Interest Rate On Loan:</th>
               <th>Repayment Schedule:</th>
               <th>Numbers of Payments:</th>
-              <th>Amount Per Payment:</th>
               <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Information:</th>
               <th>Submit Loan Terms Information:</th>
@@ -181,11 +180,6 @@ class LoanAgreementTerms extends Component {
               </td>
               <td>
                 <label>
-                  {this.state.Amount_Per_Payment}
-                </label>
-              </td>
-              <td>
-                <label>
                   {this.state.Loanee_Pay_Pal_Data}
                 </label>
               </td>
@@ -203,8 +197,9 @@ class LoanAgreementTerms extends Component {
                 <div className='button is-primary is-outlined is-small'>
                   <button className='button is-text is-bold is-outlined is-normal'
                     onClick={this.handleLoanTermsSubmit}>
-
-                    <strong>SUBMIT</strong>
+                    <Link to='/PendingLoaneeApproval'>
+                      <strong>SUBMIT</strong>
+                    </Link>
                   </button>
                 </div>
               </td>

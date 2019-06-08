@@ -192,7 +192,6 @@ class App extends Component {
             <Route exact path='/LoansCreated' render={(props) =>
               <LoansCreated {...props}
                 CreatedLoansInfo={CreatedLoansInfo}
-                postLoansCreatedInfo={this.postLoansCreatedInfo}
                 getLoansCreatedInfo={this.getLoansCreatedInfo} />} />
           </Switch>
         </div>

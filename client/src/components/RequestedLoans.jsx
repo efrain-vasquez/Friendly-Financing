@@ -37,9 +37,9 @@ class RequestedLoans extends Component {
     return (
       <div>
         <Header />
-        <section className='hero is-primary is-small is-bold title'>
+        <section className='hero is-primary is-small is-bold title is-center'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <p className='title'>List of Requested Loans</p>
             </div>
           </div>
@@ -59,6 +59,7 @@ class RequestedLoans extends Component {
           <tbody>
             {LoanRequestInfo.map(listItem => (
               <IndividualRequest
+                ID={listItem.ID}
                 Loan_ID={listItem.Loan_ID}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}

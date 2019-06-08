@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = () => (
 
   <div>
-    <nav className='navbar is-transparent is-left'
+    <nav className='navbar is-transparent is-center'
       role='navigation'
       aria-label='main navigation'>
       <div className='navbar-brand'>
@@ -13,7 +13,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/'>
-                Home
+                <strong>Home</strong>
               </Link>
             </button>
           </div>
@@ -33,7 +33,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/Members'>
-                Members
+                <strong>Members</strong>
               </Link>
             </button>
           </div>
@@ -43,7 +43,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/RequestALoan'>
-                Request A Loan
+                <strong>Request A Loan</strong>
               </Link>
             </button>
           </div>
@@ -53,7 +53,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/RequestedLoans'>
-                Requested Loans
+                <strong>Requested Loans</strong>
               </Link>
             </button>
           </div>
@@ -73,7 +73,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/LoansCreated'>
-                Created Loans
+                <strong>Created Loans</strong>
               </Link>
             </button>
           </div>
@@ -83,7 +83,7 @@ const Header = () => (
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-light is-bold is-outlined is-normal'>
               <Link to='/LoanAgreementTerms'>
-                Terms Of Loan
+                <strong>Terms Of Loan</strong>
               </Link>
             </button>
           </div>

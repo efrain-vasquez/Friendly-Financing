@@ -55,7 +55,7 @@ class RequestALoan extends Component {
         <Header />
         <section className='hero is-small is-primary is-bold is-center'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <h1 className='title'>
         Request A Loan
               </h1>

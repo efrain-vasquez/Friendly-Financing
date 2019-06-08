@@ -23,9 +23,9 @@ class Members extends Component {
     return (
       <div>
         <Header />
-        <section className='hero is-primary is-bold'>
+        <section className='hero is-primary is-bold is-center'>
           <div className='hero-body'>
-            <div className='container'>
+            <div className='container has-text-centered'>
               <p className='title'>Members Of Our Community</p>
             </div>
           </div>
@@ -46,6 +46,7 @@ class Members extends Component {
           <tbody>
             {MembersInfo.map(listItem => (
               <IndividualMember
+                key={listItem.ID}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}
                 Email_Address={listItem.Email_Address}

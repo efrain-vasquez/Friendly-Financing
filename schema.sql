@@ -78,7 +78,8 @@ CREATE TABLE IF NOT EXISTS CreatedLoansInfo (
   Primary KEY (ID)
   );
 
-
+INSERT INTO CreatedLoansInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) 
+                VALUES (Loanee_Loan_ID, "8000", "10", "Weekly", "7", "1000", "My pay pal info", "Your Pay Pal Info");
 
 -- INSERT INTO LoanTermsInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) 
 --                VALUES (Loanee_Loan_ID, 8000, 10, "Weekly", 7, 1000, "My pay pal info", "Your Pay Pal Info");
