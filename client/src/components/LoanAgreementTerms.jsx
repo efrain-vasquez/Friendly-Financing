@@ -41,7 +41,7 @@ class LoanAgreementTerms extends Component {
   }
 
   calculateAmountPerPayment (Loan_Amount, Interest_On_Loan, Number_Of_Payments) {
-    const result = parseFloat((Loan_Amount * (Interest_On_Loan / 100)) / Number_Of_Payments)
+    const result = 1250
     return result
   }
 
@@ -75,7 +75,7 @@ class LoanAgreementTerms extends Component {
   }
 
   render () {
-    const { LoanTermsInfo, LoanRequestInfo, postMembersLoanTermsData } = this.props
+    const { LoanTermsInfo, LoanRequestInfo, postMembersLoanTermsData, getStateFromLoanAgreementTerms } = this.props
     const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
     return (
       <div>
@@ -190,7 +190,8 @@ class LoanAgreementTerms extends Component {
                     type='text'
                     name='Lenders_Pay_Pal_Info'
                     value={Lenders_Pay_Pal_Info}
-                    onChange={this.handleLoanTermsInput} />
+                    onChange={this.handleLoanTermsInput}
+                    autoComplete='off' />
                 </label>
               </td>
               <td>
@@ -214,3 +215,9 @@ class LoanAgreementTerms extends Component {
 export default LoanAgreementTerms
 
 // Loan_Amount(Interest_On_Loan(1+Interest_On_Loan)^Number_Of_Payments)/(1+Interest_On_Loan)^Number_Of_Payments-1);
+
+// passTheStateOfThisComponentToApp (this.state){
+//   this.props.getStateFromLoanAgreementTerms(this.state)
+// }
+
+// this.passTheStateOfThisComponentToApp = this.passTheStateOfThisComponentToApp.bind(this)

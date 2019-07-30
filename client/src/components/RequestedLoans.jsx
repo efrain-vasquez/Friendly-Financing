@@ -59,7 +59,7 @@ class RequestedLoans extends Component {
           <tbody>
             {LoanRequestInfo.map(listItem => (
               <IndividualRequest
-                ID={listItem.ID}
+                key={listItem.ID}
                 Loan_ID={listItem.Loan_ID}
                 First_Name={listItem.First_Name}
                 Last_Name={listItem.Last_Name}

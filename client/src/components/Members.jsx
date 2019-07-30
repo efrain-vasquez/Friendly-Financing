@@ -39,7 +39,7 @@ class Members extends Component {
               <th>Current Employer:</th>
               <th>Job Title:</th>
               <th>Time Employed At Current Job:</th>
-              <th>Reference:</th>
+              <th> Member Reference:</th>
             </tr>
           </thead>
 

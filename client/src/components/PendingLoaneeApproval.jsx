@@ -7,18 +7,28 @@ class PendingLoaneeApproval extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      Loanee_Loan_ID: '',
-      Loan_Amount: '',
-      Interest_On_Loan: '',
-      Repayment_Schedule: '',
-      Number_Of_Payments: '',
-      Amount_Per_Payment: '',
-      Loanee_Pay_Pal_Data: '',
-      Lenders_Pay_Pal_Info: ''
+      Accepted_Loanee_Loan_ID: '',
+      Accepted_Loan_Amount: '',
+      Accepted_Interest_On_Loan: '',
+      Accepted_Repayment_Schedule: '',
+      Accepted_Number_Of_Payments: '',
+      Accepted_Amount_Per_Payment: '',
+      Accepted_Loanee_Pay_Pal_Data: '',
+      Accepted_Lenders_Pay_Pal_Info: ''
     }
     this.handleCreatedLoansInput = this.handleCreatedLoansInput.bind(this)
     this.handleCreatedLoansSubmit = this.handleCreatedLoansSubmit.bind(this)
   }
+
+  // componentDidMount () {
+  //   this.setState({
+  //     myAccepted_Loanee_Loan_ID: this.props.Loanee_Loan_ID,
+  //     Accepted_Loanee_Loan_ID: this.props.Loanee_Loan_ID,
+  //     // myAccepted_Loanee_Loan_ID: this.state.Accepted_Loanee_Loan_ID,
+  //     // Accepted_Loanee_Loan_ID: Loanee_Loan_ID
+  //     Loanee_Loan_ID: this.state.Accepted_Loanee_Loan_ID
+  //   })
+  // }
 
   handleCreatedLoansInput (e) {
     const { target } = e
@@ -29,35 +39,47 @@ class PendingLoaneeApproval extends Component {
     })
   }
 
-  handleCreatedLoansSubmit (e) {
-    e.preventDefault()
-    const { Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.state
+  handleCreatedLoansSubmit (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) {
+    const { Accepted_Loanee_Loan_ID, Accepted_Loan_Amount, Accepted_Interest_On_Loan, Accepted_Repayment_Schedule, Accepted_Number_Of_Payments, Accepted_Amount_Per_Payment, Accepted_Loanee_Pay_Pal_Data, Accepted_Lenders_Pay_Pal_Info } = this.state
+
+    var myAccepted_Loanee_Loan_ID = Loanee_Loan_ID
+    var myAccepted_Loan_Amount = Loan_Amount
+    var myAccepted_Interest_On_Loan = Interest_On_Loan
+    var myAccepted_Repayment_Schedule = Repayment_Schedule
+    var myAccepted_Number_Of_Payments = Number_Of_Payments
+    var myAccepted_Amount_Per_Payment = Amount_Per_Payment
+    var myAccepted_Loanee_Pay_Pal_Data = Loanee_Pay_Pal_Data
+    var myAccepted_Lenders_Pay_Pal_Info = Lenders_Pay_Pal_Info
 
     this.props.postLoansCreatedInfo('/CreatedLoansInfo', {
-      Loanee_Loan_ID: Loanee_Loan_ID,
-      Loan_Amount: Loan_Amount,
-      Interest_On_Loan: Interest_On_Loan,
-      Repayment_Schedule: Repayment_Schedule,
-      Number_Of_Payments: Number_Of_Payments,
-      Amount_Per_Payment: Amount_Per_Payment,
-      Loanee_Pay_Pal_Data: Loanee_Pay_Pal_Data,
-      Lenders_Pay_Pal_Info: Lenders_Pay_Pal_Info
+      Accepted_Loanee_Loan_ID: myAccepted_Loanee_Loan_ID,
+      Accepted_Loan_Amount: myAccepted_Loan_Amount,
+      Accepted_Interest_On_Loan: myAccepted_Interest_On_Loan,
+      Accepted_Repayment_Schedule: myAccepted_Repayment_Schedule,
+      Accepted_Number_Of_Payments: myAccepted_Number_Of_Payments,
+      Accepted_Amount_Per_Payment: myAccepted_Amount_Per_Payment,
+      Accepted_Loanee_Pay_Pal_Data: myAccepted_Loanee_Pay_Pal_Data,
+      Accepted_Lenders_Pay_Pal_Info: myAccepted_Lenders_Pay_Pal_Info
     })
 
-    this.setState({
-      Loanee_Loan_ID: '',
-      Loan_Amount: '',
-      Interest_On_Loan: '',
-      Repayment_Schedule: '',
-      Number_Of_Payments: '',
-      Amount_Per_Payment: '',
-      Loanee_Pay_Pal_Data: '',
-      Lenders_Pay_Pal_Info: ''
-    })
+    // this.setState({
+    //   Accepted_Loanee_Loan_ID: '',
+    //   Accepted_Loan_Amount: '',
+    //   Accepted_Interest_On_Loan: '',
+    //   Accepted_Repayment_Schedule: '',
+    //   Accepted_Number_Of_Payments: '',
+    //   Accepted_Amount_Per_Payment: '',
+    //   Accepted_Loanee_Pay_Pal_Data: '',
+    //   Accepted_Lenders_Pay_Pal_Info: ''
+    // })
   }
 
+  // handleSubmitStateFromPendingLoaneeApproval (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) {
+  //   this.props.getStateFromPendingLoaneeApproval(Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info)
+  // }
+
   render () {
-    const { LoanTermsInfo, CreatedLoansInfo, getMembersLoanTermsData, postLoansCreatedInfo } = this.props
+    const { LoanTermsInfo, CreatedLoansInfo, getMembersLoanTermsData, postLoansCreatedInfo, Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info } = this.props
     const IndividualLoanRequest =
     ({ Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
       (<tr>
@@ -72,7 +94,7 @@ class PendingLoaneeApproval extends Component {
         <td>
           <div className='button is-primary is-outlined is-small'>
             <button className='button is-text is-bold is-outlined is-normal'
-              onClick={(e) => { this.handleCreatedLoansSubmit(e) }}>
+              onClick={() => { this.handleCreatedLoansSubmit(Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) }}>
               <Link to='/LoansCreated'>
               Willing To Accept Terms
               </Link>
@@ -127,21 +149,32 @@ class PendingLoaneeApproval extends Component {
 
 export default PendingLoaneeApproval
 
-//   Loanee_Loan_ID: Loanee_Loan_ID,
-//   Loan_Amount: Loan_Amount,
-//   Interest_On_Loan: Interest_On_Loan,
-//   Repayment_Schedule: Repayment_Schedule,
-//   Number_Of_Payments: Number_Of_Payments,
-//   Amount_Per_Payment: Amount_Per_Payment,
-//   Loanee_Pay_Pal_Data: Loanee_Pay_Pal_Data,
-//   Lenders_Pay_Pal_Info: Lenders_Pay_Pal_Info
-// })
+//   Accepted_Loanee_Loan_ID: Loanee_Loan_ID,
+//   Accepted_Loan_Amount: Loan_Amount,
+//   Accepted_Interest_On_Loan: Interest_On_Loan,
+//   Accepted_Repayment_Schedule: Repayment_Schedule,
+//   Accepted_Number_Of_Payments: Number_Of_Payments,
+//   Accepted_Amount_Per_Payment: Amount_Per_Payment,
+//   Accepted_Loanee_Pay_Pal_Data: Loanee_Pay_Pal_Data,
+//   Accepted_Lenders_Pay_Pal_Info: Lenders_Pay_Pal_Info
 
-// Loanee_Loan_ID,
-// Loan_Amount,
-// Interest_On_Loan,
-// Repayment_Schedule,
-// Number_Of_Payments,
-// Amount_Per_Payment,
-// Loanee_Pay_Pal_Data,
-// Lenders_Pay_Pal_Info
+// Accepted_Loanee_Loan_ID,
+// Accepted_Loan_Amount,
+// Accepted_Interest_On_Loan,
+// Accepted_Repayment_Schedule,
+// Accepted_Number_Of_Payments,
+// Accepted_Amount_Per_Payment,
+// Accepted_Loanee_Pay_Pal_Data,
+// Accepted_Lenders_Pay_Pal_Info
+
+// onClick={this.handleLoanTermsSubmit}>
+// onClick={(e) => { this.handleCreatedLoansSubmit(e) }}>
+
+// Accepted_Loanee_Loan_ID: this.props.Loanee_Loan_ID,
+// Accepted_Loan_Amount: this.props.Loan_Amount,
+// Accepted_Interest_On_Loan: this.props.Interest_On_Loan,
+// Accepted_Repayment_Schedule: this.props.Repayment_Schedule,
+// Accepted_Number_Of_Payments: this.props.Number_Of_Payments,
+// Accepted_Amount_Per_Payment: this.props.Amount_Per_Payment,
+// Accepted_Loanee_Pay_Pal_Data: this.props.Loanee_Pay_Pal_Data,
+// Accepted_Lenders_Pay_Pal_Info: this.props.Lenders_Pay_Pal_Info

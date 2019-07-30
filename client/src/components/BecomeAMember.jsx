@@ -140,7 +140,7 @@ class BecomeAMember extends Component {
         </label>
 
         <label className='label'>
-          <strong>Reference:</strong>{' '}
+          <strong>Member Reference (Optional):</strong>{' '}
           <input
             type='text'
             name='Reference'

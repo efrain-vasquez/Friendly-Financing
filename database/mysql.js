@@ -98,10 +98,10 @@ module.exports.getCreatedLoanTermsData = cb => {
   })
 }
 
-module.exports.postCreatedLoanTermsData = function (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info, cb) {
+module.exports.postCreatedLoanTermsData = function (Accepted_Loanee_Loan_ID, Accepted_Loan_Amount, Accepted_Interest_On_Loan, Accepted_Repayment_Schedule, Accepted_Number_Of_Payments, Accepted_Amount_Per_Payment, Accepted_Loanee_Pay_Pal_Data, Accepted_Lenders_Pay_Pal_Info, cb) {
   connection.query(
-    'INSERT INTO CreatedLoansInfo (Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
-    [Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info],
+    'INSERT INTO CreatedLoansInfo (Accepted_Loanee_Loan_ID, Accepted_Loan_Amount, Accepted_Accepted_Interest_On_Loan, Accepted_Repayment_Schedule, Accepted_Number_Of_Payments, Accepted_Amount_Per_Payment, Accepted_Loanee_Pay_Pal_Data, Accepted_Lenders_Pay_Pal_Info) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+    [Accepted_Loanee_Loan_ID, Accepted_Loan_Amount, Accepted_Interest_On_Loan, Accepted_Repayment_Schedule, Accepted_Number_Of_Payments, Accepted_Amount_Per_Payment, Accepted_Loanee_Pay_Pal_Data, Accepted_Lenders_Pay_Pal_Info],
     (error, results) => {
       if (error) {
         cb(error)

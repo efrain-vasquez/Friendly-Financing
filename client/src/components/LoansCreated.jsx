@@ -11,16 +11,16 @@ class LoansCreated extends Component {
   render () {
     const { CreatedLoansInfo, getLoansCreatedInfo } = this.props
     const CreatedLoanRequest =
-    ({ Loanee_Loan_ID, Loan_Amount, Interest_On_Loan, Repayment_Schedule, Number_Of_Payments, Amount_Per_Payment, Loanee_Pay_Pal_Data, Lenders_Pay_Pal_Info }) =>
+    ({ Accepted_Loanee_Loan_ID, Accepted_Loan_Amount, Accepted_Interest_On_Loan, Accepted_Repayment_Schedule, Accepted_Number_Of_Payments, Accepted_Amount_Per_Payment, Accepted_Loanee_Pay_Pal_Data, Accepted_Lenders_Pay_Pal_Info }) =>
       (<tr>
-        <td>{`${Loanee_Loan_ID}`}</td>
-        <td>{`${Loan_Amount}`}</td>
-        <td>{`${Interest_On_Loan}`}</td>
-        <td>{`${Repayment_Schedule}`}</td>
-        <td>{`${Number_Of_Payments}`}</td>
-        <td>{`${Amount_Per_Payment}`}</td>
-        <td>{`${Loanee_Pay_Pal_Data}`}</td>
-        <td>{`${Lenders_Pay_Pal_Info}`}</td>
+        <td>{`${Accepted_Loanee_Loan_ID}`}</td>
+        <td>{`${Accepted_Loan_Amount}`}</td>
+        <td>{`${Accepted_Interest_On_Loan}`}</td>
+        <td>{`${Accepted_Repayment_Schedule}`}</td>
+        <td>{`${Accepted_Number_Of_Payments}`}</td>
+        <td>{`${Accepted_Amount_Per_Payment}`}</td>
+        <td>{`${Accepted_Loanee_Pay_Pal_Data}`}</td>
+        <td>{`${Accepted_Lenders_Pay_Pal_Info}`}</td>
       </tr>)
     return (
       <div>
@@ -35,12 +35,12 @@ class LoansCreated extends Component {
         <table className='table table is-striped is-hoverable is-fullwidth is-bordered'>
           <thead>
             <tr>
-              <th>Loanee Loan ID:</th>
-              <th>Loan Amount:</th>
-              <th>Interest On Loan:</th>
-              <th>Repayment Schedule:</th>
-              <th>Number Of Payments:</th>
-              <th>Amount Per Payment:</th>
+              <th>Accepted Loanee Loan ID:</th>
+              <th>Accepted Loan Amount:</th>
+              <th>Accepted Interest On Loan:</th>
+              <th>Accepted Repayment Schedule:</th>
+              <th>Accepted Number Of Payments:</th>
+              <th>Accepted Amount Per Payment:</th>
               <th>Loanee Pay Pal Data:</th>
               <th>Lenders Pay Pal Info:</th>
             </tr>
@@ -49,14 +49,14 @@ class LoansCreated extends Component {
             {CreatedLoansInfo.map(listItem => (
               <CreatedLoanRequest
                 key={listItem.ID}
-                Loanee_Loan_ID={listItem.Loanee_Loan_ID}
-                Loan_Amount={listItem.Loan_Amount}
-                Interest_On_Loan={listItem.Interest_On_Loan}
-                Repayment_Schedule={listItem.Repayment_Schedule}
-                Number_Of_Payments={listItem.Number_Of_Payments}
-                Amount_Per_Payment={listItem.Amount_Per_Payment}
-                Loanee_Pay_Pal_Data={listItem.Loanee_Pay_Pal_Data}
-                Lenders_Pay_Pal_Info={listItem.Lenders_Pay_Pal_Info}
+                Accepted_Loanee_Loan_ID={listItem.Accepted_Loanee_Loan_ID}
+                Accepted_Loan_Amount={listItem.Accepted_Loan_Amount}
+                Accepted_Interest_On_Loan={listItem.Accepted_Interest_On_Loan}
+                Accepted_Repayment_Schedule={listItem.Accepted_Repayment_Schedule}
+                Accepted_Number_Of_Payments={listItem.Accepted_Number_Of_Payments}
+                Accepted_Amount_Per_Payment={listItem.Accepted_Amount_Per_Payment}
+                Accepted_Loanee_Pay_Pal_Data={listItem.Accepted_Loanee_Pay_Pal_Data}
+                Accepted_Lenders_Pay_Pal_Info={listItem.Accepted_Lenders_Pay_Pal_Info}
               />
             ))}
           </tbody>

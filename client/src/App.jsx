@@ -30,6 +30,7 @@ class App extends Component {
     this.getLoansCreatedInfo = this.getLoansCreatedInfo.bind(this)
     this.postLoansCreatedInfo = this.postLoansCreatedInfo.bind(this)
     this.updateLoanAgreementTerms = this.updateLoanAgreementTerms.bind(this)
+    // this.getStateFromPendingLoaneeApproval = this.getStateFromPendingLoaneeApproval.bind(this)
   }
 
   componentDidMount () {
@@ -130,7 +131,7 @@ class App extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(() => this.getLoansCreatedInfo(url))
       .catch(err => console.error(err))
   }
@@ -145,6 +146,19 @@ class App extends Component {
       currentAmount_Requesting: Amount_Requesting
     })
   }
+
+  // getStateFromPendingLoaneeApproval () {
+  //   this.setState({
+  //     myAccepted_Loanee_Loan_ID: Loanee_Loan_ID,
+  //     myAccepted_Loan_Amount: Loan_Amount,
+  //     myAccepted_Interest_On_Loan: Interest_On_Loan,
+  //     myAccepted_Repayment_Schedule: Repayment_Schedule,
+  //     myAccepted_Number_Of_Payments: Number_Of_Payments,
+  //     myAccepted_Amount_Per_Payment: Amount_Per_Payment,
+  //     myAccepted_Loanee_Pay_Pal_Data: Loanee_Pay_Pal_Data,
+  //     myAccepted_Lenders_Pay_Pal_Info: Lenders_Pay_Pal_Info
+  //   })
+  // }
 
   render () {
     const { currentID, currentLoanee_Pay_Pal_Info, currentAmount_Requesting, MembersInfo, LoanRequestInfo, LoanTermsInfo, CreatedLoansInfo } = this.state
@@ -174,6 +188,7 @@ class App extends Component {
                 postMembersLoanTermsData={this.postMembersLoanTermsData} />} />
             <Route exact path='/PendingLoaneeApproval' render={(props) =>
               <PendingLoaneeApproval {...props}
+                getStateFromPendingLoaneeApproval={this.getStateFromPendingLoaneeApproval}
                 CreatedLoansInfo={CreatedLoansInfo}
                 createAcceptedLoanTermsEntry={this.createAcceptedLoanTermsEntry}
                 LoanTermsInfo={LoanTermsInfo}
